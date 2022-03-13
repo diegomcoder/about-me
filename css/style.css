@@ -68,6 +68,7 @@
 
 #home .homespace {
     position: relative;
+    width: 100vw;
 }
 
 #home .homespace .clouds {
