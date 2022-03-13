@@ -9,7 +9,6 @@
 
 .container, .homespace, .about-me, .pagebody {
     box-sizing: border-box;
-    overflow: hidden;
 }
 
 #home {
@@ -73,6 +72,7 @@
 
 #home .homespace .clouds {
     position: relative;
+    overflow: hidden;
 }
 
 /* CLOUDS ANIMATION */
