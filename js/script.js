@@ -129,7 +129,7 @@ window.addEventListener('scroll', () => {
 
 
     // Change active when scrolling
-    if (change_active_nav_link_by_click === false && window.innerWidth > 600) {
+    if (change_active_nav_link_by_click === false) {
         if (hero.getBoundingClientRect().top >= 450 * -1) {
             nav_buttons.forEach((a) => a.classList.remove('active-nav'))
             nav_buttons[0].classList.add('active-nav')
