@@ -1,171 +1,315 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="shortcut icon" href="images/favicon.png" type="icon">
-    <link href="https://fonts.googleapis.com/css2?family=Allison&family=Source+Sans+Pro&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <title>I'm Diego</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="images/favicon.png" type="icon">
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="css/style.css">
+
+	<!-- Javascript -->
+	<script src="./js/script.js" defer></script>
+
+	<title>I'm Diego</title>
 </head>
 
 <body>
-<!-- HOME - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-    <div id="home">
+	<div class="underlay"></div>
+	<div class="hamburger-menu-btns">
+		<svg class="nav-btn nav-btn-open" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+			<path
+				d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z" />
+		</svg>
+		<svg class="nav-btn nav-btn-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+			<path
+				d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z" />
+		</svg>
+	</div>
+	<div class="mobile-menu-list">
+		<ul class="mobile-navbar-list">
+			<li><a href="#hero">Home</a></li>
+			<li><a href="#about">About</a></li>
+			<li><a href="#skills">Skills</a></li>
+			<li><a href="#projects">Projects</a></li>
+			<li><a href="#goal">Goal</a></li>
+			<li><a href="#contact">Contact</a></li>
+		</ul>
+	</div>
 
-        <nav id="navbar">
-            <div class="container">
-                <div class="logo">
-                    <img src="images/favicon.png" alt="Profile Icon">
-                </div>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="file:///C:/wamp64/www/Web%20Development/projects/my-website/index.html#:~:text=frontend%20web%20developer-,About%20me,-I%20am%20a">About</a></li>
-                    <li><a href="file:///C:/wamp64/www/Web%20Development/projects/my-website/index.html#:~:text=all%20by%20myself.-,Work,-I%20decided%20to">Work</a></li>
-                    <li><a href="file:///C:/wamp64/www/Web%20Development/projects/my-website/index.html#:~:text=a%20web%20developer.-,Recent%20projects,-Here%20are%20some">Projects</a></li>
-                    <li><a href="file:///C:/wamp64/www/Web%20Development/projects/my-website/index.html#:~:text=that%20I%20did-,Notes,-I%20want%20to">Notes</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </div>
-        </nav>
+	<!-- HEADER -->
+	<header>
+		<!-- NAVBAR SECTION -->
+		<section class="navbar-section" aria-label="navigation bar">
+			<div class="container">
+				<nav class="navbar">
+					<ul class="list navbar-list">
+						<li><a href="#hero">Home</a></li>
+						<li><a href="#about">About</a></li>
+						<li><a href="#skills">Skills</a></li>
+						<li><a href="#projects">Projects</a></li>
+						<li><a href="#goal">Goal</a></li>
+						<li><a href="#contact">Contact</a></li>
+					</ul>
+				</nav>
+			</div>
+		</section>
+		<!-- end of navbar section -->
 
-        <div class="homespace">
+		<!-- HERO SECTION -->
+		<section id="hero" class="hero-section">
+			<div data-ripple="blur-circle" class="ripple"></div>
+			<div class="container">
+				<div id="hero-content" class="hero-content-animation">
+					<h1 id="name">Diego Silva</h1>
+					<p id="description" class="cursor"></p>
+				</div>
+			</div>
+		</section>
+	</header>
 
-            <div class="clouds">
-                <img src="images/cloud-one.png" alt="">
-                <img src="images/cloud-two.png" alt="">
-                <img src="images/cloud-one.png" alt="">
-                <img src="images/cloud-two.png" alt="">
-            </div>
-            
-            <div class="tandsub">
-                <h1>I'm Diego</h1>
-                <h2>a frontend web developer</h2>
-            </div>
+	<!-- MAIN -->
+	<main>
+		<!-- ABOUT-ME SECTION -->
+		<section id="about" class="aboutMe-section">
+			<div data-ripple="green-circle" class="ripple"></div>
+			<div class="container">
+				<article class="aboutMe">
+					<h2>About me</h2>
+					<div class="block">
+						<div class="polygon">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 397.31 344.08">
+								<g>
+									<polygon
+										points="297.99 0 397.31 172.04 297.99 344.08 99.33 344.08 0 172.04 99.33 0 297.99 0" />
+								</g>
+							</svg>
+							<img src="images/diego-poligon.png" alt="Diego's profile picture">
+						</div>
+						<div class="text">
+							<h3>Hi, I'm Diego. Nice to meet you.</h3>
+							<p>I am a web developer based in Bahia, Brazil.</p>
+							<p>I have a passion for programming, web design and animation, and I love highlighting my
+								creativity along the development of my own projects.</p>
+						</div>
+						<section class="bio">
+							<h4>Bio</h4>
+							<ul>
+								<li>Nov 29, 1995</li>
+								<li>Brazilian</li>
+								<li>Portuguese, English</li>
+								<li>Vitoria da Conquista, Bahia, Brazil</li>
+							</ul>
+						</section>
+						<div class="cv">
+							<a href="./resume/CV.docx" download>DOWNLOAD MY RESUME</a>
+						</div>
+					</div>
+				</article>
+			</div>
+		</section>
 
-            <div class="world">
-                <img src="images/world.png" alt="">
-            </div>
-        </div>
-
-    </div>
-
-<!-- ABOUT - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-    <div class="about-me">
-        <div class="container">
-            <section id="about">
-                <div class="img-and-text">
-                    <img src="images/iamdiego.png" alt="">
-                    <h1>About me</h1>
-                    <p>
-                        I am a web developer based in Bahia, Brazil.<br>I have a passion for programming, web design and animation, and I love highlighting my creativity along the development of my own projects.
-                    </p>
-                </div>
-            </section>
-        </div>
-    </div>
-
-    <div class="pagebody">
-
-        <div class="container">
-            <section id="about">
-                <div class="img-and-text">
-                    <img src="images/w95.png" alt="">
-                    <h2>I love computers since I was a child</h2>
-                    <p>
-                        My very first computer was a Windows 95 PC that I got from my uncle when I was 13, and I really loved it.<br>This computer awakened in me a curiosity to know how it works, and with that curiosity I started to study electronics and design logic circuits all by myself.
-                    </p>
-                </div>
-
-            </section>
-        </div>
-    
-<!-- WORK - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-        <div class="container">
-            <section id="work">
-                <img src="images/studying.png" alt="">
-                <h1>Work</h1>
-                <h2>
-                    I decided to study programming recently (January 2022)
-                </h1>
-                <p>
-                    Although the love for computers, I started my career as an office assistant in a carrier company. I have also worked as a logistics assistant before I finally decide to become a web developer.
-                </p>
-            </section>
-        </div>
-    </div>
-
-<!-- PROJECTS - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-        <div class="about-me">
-            <div class="container">
-                <section id="about">
-                    <div class="img-and-text">
-                        <h1>Recent projects</h1>
-                        <h2>Here are some projects that I did</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum ea nostrum atque commodi magnam nihil, eos doloremque sit cupiditate voluptates, quo voluptatibus dicta deserunt saepe corporis accusamus eveniet aliquid rerum!</p>
-                    </div>
-                </section>
-            </div>
-        </div>
-
-<!-- NOTES - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-        <div class="about-me">
-            <div class="container" id="last-about">
-                <section id="about">
-                    <div class="img-and-text">
-                        <h1>Notes</h1>
-                        <h2>I want to help the world</h2>
-                        <p>
-                            My dream is to use technology to solve at least one of the many problems we face in the world. If I can build a project or participate in someone’s project that aims to help thousands of people, I would be very close to my purpose in life.
-                        </p>
-                    </div>
-                </section>
-            </div>
-        </div>
-    </div>
+		<!-- SKILLS SECTION -->
+		<section id="skills" class="skills-section">
+			<div class="container">
+				<article class="skills">
+					<h2>Skills & Expertise</h2>
+					<section class="graph">
+						<ul>
+							<li>
+								<label for="js">Javascript</label>
+								<span class="bar"><span class="level" id="js" data-percent="37%"></span></span>
+							</li>
+							<li>
+								<label for="css">CSS3</label>
+								<span class="bar"><span class="level" id="css" data-percent="53%"></span></span>
+							</li>
+							<li>
+								<label for="html">HTML5</label>
+								<span class="bar"><span class="level" id="html" data-percent="81%"></span></span>
+							</li>
+							<li>
+								<label for="xd">Adobe XD</label>
+								<span class="bar"><span class="level" id="xd" data-percent="25%"></span></span>
+							</li>
+						</ul>
+						<ul>
+							<li>
+								<label for="en">English</label>
+								<span class="bar"><span class="level" id="en" data-percent="56%"></span></span>
+							</li>
+							<li>
+								<label for="ps">Adobe Photoshop</label>
+								<span class="bar"><span class="level" id="ps" data-percent="32%"></span></span>
+							</li>
+							<li>
+								<label for="excel">Office Excel</label>
+								<span class="bar"><span class="level" id="excel" data-percent="29%"></span></span>
+							</li>
+							<li>
+								<label for="word">Office Word</label>
+								<span class="bar"><span class="level" id="word" data-percent="65%"></span></span>
+							</li>
+						</ul>
+					</section>
+				</article>
+			</div>
+		</section>
 
 
-<!-- CONTACT ME - - - - - - - - - - - - - - - - - - - - - - - - - -->
-    <div class="contact-container">
+		<!-- PROJECTS SECTION -->
+		<section id="projects" class="projects-section">
+			<div class="container">
+				<article class="projects">
+					<h2>Recent projects</h2>
+					<div class="all-projects-container">
+						<div id="tiles" class="project-container">
+							<img src="./images/live-tiles.png" alt="">
+							<div class="project-overlay">
+								<h6>Live Tiles</h6>
+								<p>Play around with this display<br><br>Javascript, HTML & CSS</p>
+								<div><a href="#">VIEW PROJECT</a></div>
+							</div>
+						</div>
+						<div id="form" class="project-container">
+							<img src="./images/xbox-form.jpg" alt="">
+							<div class="project-overlay">
+								<h6>Xbox Live Form</h6>
+								<p>A fictional form and the first one that I built
+									<br><br>CSS & HTML
+								</p>
+								<div><a href="https://diegounq.github.io/my-first-form/" target="__blank">VIEW
+										PROJECT</a></div>
+							</div>
+						</div>
+						<div id="spotify" class="project-container">
+							<img src="./images/spotify-clone.png" alt="">
+							<div class="project-overlay">
+								<h6>Spotify Premium</h6>
+								<p>A clone of my favourite musics website<br><br>Javascript, HTML & CSS</p>
+								<span class="project-in-progress">IN PROGRESS</span>
+							</div>
+						</div>
+						<div id="mindquots" class="project-container">
+							<img src="./images/Mindquots.png" alt="">
+							<div class="project-overlay">
+								<h6>Mindquots</h6>
+								<p>Whenever you read a book, stick to your favourite phrases<br><br>Jquery, CSS & HTML
+								</p>
+								<span class="project-in-progress">IN PROGRESS</span>
+							</div>
+						</div>
+						<div id="typiest" class="project-container">
+							<img src="./images/Typiestpro.png" alt="">
+							<div class="project-overlay">
+								<h6>Typiest Pro</h6>
+								<p>An attempt to create my own typing training website<br><br>Node.js, Javascript, CSS &
+									HTML</p>
+								<span class="project-in-progress">IN PROGRESS</span>
+							</div>
+						</div>
+						<div id="personal" class="project-container">
+							<img src="./images/personal-website.png" alt="">
+							<div class="project-overlay">
+								<h6>My Personal Website</h6>
+								<p>This is the project that took me more time to develop<br><br>Typescript, Javascript,
+									SASS, CSS &
+									HTML</p>
+								<span id="prj-done" class="project-in-progress">Done!</span>
+							</div>
+						</div>
+					</div>
+				</article>
+			</div>
+		</section>
 
-        <section id="contact-me">
-            <h1>Contact me</h1>
-            <ul>
-                <li><a target="_blank" href="https://www.facebook.com/m.dieego/">facebook.com/m.dieego/</a></li>
-                <li><a target="_blank" href="https://www.instagram.com/diego.unq/">instagram.com/diego.unq/</a></li>
-                <li><a target="_blank" href="https://www.youtube.com/channel/UCTZ-0XWu05vMoDP-rpI8HTg">youtube/diegolangs/</a></li>
-                <li><a target="_blank" href="https://www.linkedin.com/in/diego-medeiros-silva-868b1b202">linkedin/diegomedeiros/</a></li>
-            </ul>
-        </section>
 
-        <aside id="form-sidebar">
-            <form action="">
-                <div>
-                    <input type="text" placeholder="Your Name">
-                </div>
+		<!-- PURPOSE SECTION -->
+		<section id="goal" class="goal-section">
+			<div class="container">
+				<article class="goal">
+					<h2>My Goal</h2>
+					<h3>Do we share a similar goal?</h3>
+					<p>My main goal is to use technology to solve at least one of the many problems we face in the
+						world.</p>
+					<p>If I can build a project or participate in someone's project that aims to help thousands of
+						people, I would be very close to my purpose in life.</p>
+				</article>
+			</div>
+		</section>
 
-                <div>
-                    <input type="email" placeholder="Your Email">
-                </div>
 
-                <div>
-                    <textarea name="message" id="" cols="30" rows="4"></textarea>
-                </div>
+		<!-- CONTACT SECTION -->
+		<section id="contact" class="contact-section">
+			<div class="container">
+				<header>
+					<h2>Contact me</h2>
+				</header>
+				<article class="socialMedia">
+					<h3>Social Media</h3>
+					<ul>
+						<li id="facebook">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+								<path
+									d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z" />
+							</svg>
+							<a target="_blank" href="https://www.facebook.com/m.dieego/">/m.dieego</a>
+						</li>
+						<li id="instagram">
 
-                <input class="button" type="submit">
-            </form>
-        </aside>
-        
-    </div>
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+								<path
+									d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" />
+							</svg>
+							<a target="_blank" href="https://www.instagram.com/diego.unq/">/diego.unq</a>
+						</li>
+						<li id="youtube">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+								<path
+									d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z" />
+							</svg>
+							<a target="_blank"
+								href="https://www.youtube.com/channel/UCTZ-0XWu05vMoDP-rpI8HTg">/diegolangs</a>
+						</li>
+						<li id="linkedin">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+								<path
+									d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z" />
+							</svg>
+							<a target="_blank"
+								href="https://www.linkedin.com/in/diego-medeiros-silva-868b1b202">/diegomedeiros</a>
+						</li>
+					</ul>
+				</article>
+				<aside class="emailMe">
+					<h3>Let's Talk</h3>
+					<form action="">
+						<label for="name">Your Name</label>
+						<input id="name" type="text" required>
+						<label for="email">Your Email</label>
+						<input id="email" type="email" required>
+						<label for="message">Message</label>
+						<textarea id="message" name="message" required></textarea>
+						<input id="send" class="button" type="submit" value="SEND MESSAGE">
+					</form>
+				</aside>
+			</div>
+		</section>
+	</main>
 
-<!-- FOOTER - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-    <footer id="main-footer">
-        <p>Copyright &copy; 2022 Diego Medeiros Silva</p>
-    </footer>
-
+	<!-- FOOTER -->
+	<footer>
+		<p>Copyright &copy; 2022 Diego Medeiros Silva</p>
+	</footer>
 </body>
 
 </html>
