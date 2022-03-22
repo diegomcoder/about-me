@@ -1006,7 +1006,7 @@ footer {
         background-image: url('../images/country-hd-screen.png');
     }
 }
-
+/*
 @media (max-width: 1920px) and (min-width: 1367px) {
     .underlay {
         background-image: url('../images/country-fullhd-screen.png');
@@ -1024,3 +1024,4 @@ footer {
         background-image: url('../images/country-uhd+.jpg');
     }
 }
+*/
