@@ -163,7 +163,6 @@ p {
     overflow: hidden;
 }
 
-
 .hero-section::before {
     content: '';
     position: absolute;
@@ -173,7 +172,6 @@ p {
     width: 100%;
     background: linear-gradient(to top, var(--section-1), transparent);
 }
-
 
 #hero-content {
     padding: 5vh;
