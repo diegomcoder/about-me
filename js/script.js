@@ -1,3 +1,4 @@
+const computed_style = getComputedStyle(document.documentElement)
 const project_containers = document.querySelectorAll('.project-container')
 const mobile_menu_btns = document.querySelectorAll('.hamburger-menu-btns .nav-btn')
 const mobile_menu_links = document.querySelectorAll('.mobile-navbar-list li a')
@@ -38,8 +39,9 @@ graphAnimation('toRemove')
 
 // CURSOR BLINK
 setInterval(() => {
-    description.style.setProperty("--cursor-colored", "rgba(0,0,0,0)")
-    setTimeout(() => description.style.setProperty("--cursor-colored", "white"), 500)
+    description.style.setProperty("--cursor-clr", null)
+    const colored_cursor = computed_style.getPropertyValue('--main-clr-light')
+    setTimeout(() => description.style.setProperty("--cursor-clr", `${colored_cursor}`), 500)
 }, 1000)
 
 // NAVBAR MOBILE BUTTONS TOGGLE
@@ -59,7 +61,7 @@ window.addEventListener('resize', () => {
 
     if (window.scrollY >= viewport && window.innerWidth > 850 && window.innerWidth > 600) {
         navbar.style.width = '100%'
-        navbar.style.backgroundColor = 'rgba(0,0,0,0.7)'
+        navbar.style.backgroundColor = computed_style.getPropertyValue('--transparent-clr-dark')
         navbar.style.backgroundImage = 'unset'
         document.querySelectorAll('.navbar-list li a').forEach((a) => {
             a.style.color = 'white'
@@ -75,7 +77,7 @@ window.addEventListener('resize', () => {
         navbar.style.top = '10px'
     } else if (window.innerWidth < 850 && window.innerWidth > 600) {
         navbar.style.width = '100%'
-        navbar.style.backgroundColor = 'rgba(0,0,0,0.7)'
+        navbar.style.backgroundColor = computed_style.getPropertyValue('--transparent-clr-dark')
         navbar.style.backgroundImage = 'unset'
         document.querySelectorAll('.navbar-list li a').forEach((a) => {
             a.style.color = 'white'
@@ -89,7 +91,7 @@ window.addEventListener('resize', () => {
 // display full navbar in medium screen
 if (window.innerWidth < 850 && window.innerWidth > 600) {
     navbar.style.width = '100%'
-    navbar.style.backgroundColor = 'rgba(0,0,0,0.7)'
+    navbar.style.backgroundColor = computed_style.getPropertyValue('--transparent-clr-dark')
     navbar.style.backgroundImage = 'unset'
     document.querySelectorAll('.navbar-list li a').forEach((a) => {
         a.style.color = 'white'
@@ -113,7 +115,7 @@ window.addEventListener('scroll', () => {
     // Navbar Section
     if (window.scrollY >= viewport && window.innerWidth > 850 && window.innerWidth > 600) {
         navbar.style.width = '100%'
-        navbar.style.backgroundColor = 'rgba(0,0,0,0.7)'
+        navbar.style.backgroundColor = computed_style.getPropertyValue('--transparent-clr-dark')
         navbar.style.backgroundImage = 'unset'
         document.querySelectorAll('.navbar-list li a').forEach((a) => {
             a.style.color = 'white'
