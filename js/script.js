@@ -19,7 +19,7 @@ const skills = document.querySelector('.skills-section')
 const projects = document.querySelector('.projects-section')
 const goal = document.querySelector('.goal-section')
 const contact = document.querySelector('.contact-section')
-const subheads = ['a front-end web developer', 'and a technology lover', 'welcome to my personal website']
+const subheads = ['desenvolvedor web front-end', 'amante da tecnologia', 'encantado por design e animação', 'prazer', 'sou o Diego', 'bem vindo ao meu site']
 let viewport = window.innerHeight
 let which_subhead = 0
 let char_index = 1
@@ -179,7 +179,8 @@ function autoTyping() {
 
     // delay calling the function at the end of the string
     if (char_index == subheads[which_subhead].length) {
-        setTimeout(autoTyping, 6000)
+        let mseconds = subheads[which_subhead].length * 100
+        setTimeout(autoTyping, mseconds)
     } else {
         setTimeout(autoTyping, 100)
     }
