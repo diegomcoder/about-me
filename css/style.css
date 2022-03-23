@@ -777,6 +777,10 @@ p {
     background-color: var(--subhead-light-clr);
 }
 
+#gmail svg {
+    fill: red;
+}
+
 #facebook svg {
     fill: #3b5998;
 }
