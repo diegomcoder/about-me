@@ -1,12 +1,12 @@
 const computed_style = getComputedStyle(document.documentElement)
 const project_containers = document.querySelectorAll('.project-container')
 const mobile_menu_btns = document.querySelectorAll('.hamburger-menu-btns .nav-btn')
-const mobile_menu_links = document.querySelectorAll('.mobile-navbar-list li a')
+const mobile_menu_links = document.querySelectorAll('.mobile-navbar-list li')
 const hamburger_container = document.querySelector('.hamburger-menu-btns')
 const mobile_menu_list = document.querySelector('.mobile-menu-list')
 const graphic_bars = document.querySelectorAll('.bar .level')
 const ripple = document.querySelectorAll('.ripple')
-const nav_buttons = document.querySelectorAll('.navbar-list a')
+const nav_buttons = document.querySelectorAll('.navbar-list li')
 const video_background_frame = document.querySelector('.background-fill')
 const underlay = document.querySelector('.underlay')
 const navbar = document.querySelector('.navbar-section')
@@ -217,9 +217,30 @@ nav_buttons.forEach((a) => {
             }, 1000)
             nav_buttons.forEach((a) => a.classList.remove('active-nav'))
             this.classList.add('active-nav')
+
+            let section_position = document.getElementById(`${this.dataset.navlink}`).offsetTop
+            window.scrollTo(0, section_position)
         }
     })
 })
+
+mobile_menu_links.forEach((a) => {
+    a.addEventListener('click', function () {
+        change_active_nav_link_by_click = true
+        setTimeout(() => {
+            change_active_nav_link_by_click = false
+            graphAnimation('toAdd')
+        }, 1000)
+        nav_buttons.forEach((a) => a.classList.remove('active-nav'))
+        this.classList.add('active-nav')
+
+        let section_position = document.getElementById(`${this.dataset.navlink}`).offsetTop
+        window.scrollTo(0, section_position)
+    })
+})
+
+
+
 
 // RIPPLE EFFECT
 // event listener
