@@ -117,13 +117,13 @@ window.addEventListener('scroll', () => {
         navbar.style.width = '100%'
         navbar.style.backgroundColor = computed_style.getPropertyValue('--transparent-clr-dark')
         navbar.style.backgroundImage = 'unset'
-        document.querySelectorAll('.navbar-list li a').forEach((a) => {
-            a.style.color = 'white'
+        document.querySelectorAll('.navbar-list li').forEach((a) => {
+            a.style.color = computed_style.getPropertyValue('--main-clr-light')
         })
         navbar.style.top = '0'
     } else if (window.innerWidth > 850 && window.innerWidth > 600) {
         navbar.style = null
-        document.querySelectorAll('.navbar-list li a:not(.active-nav)').forEach((a) => {
+        document.querySelectorAll('.navbar-list li:not(.active-nav)').forEach((a) => {
             a.style.color = 'initial'
         })
         navbar.style.top = '10px'
