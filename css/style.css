@@ -16,14 +16,14 @@
     --cursor-clr: transparent;
 
     /* SKILLS PERCENTAGES */
-    --english: 50%;
-    --javascript: 20%;
-    --css: 60%;
-    --html: 80%;
-    --photoshop: 13%;
-    --ex-design: 13%;
-    --excel: 13%;
-    --word: 75%;
+    --english: 67%;
+    --javascript: 77%;
+    --css: 83%;
+    --html: 91%;
+    --photoshop: 48%;
+    --ex-design: 21%;
+    --excel: 18%;
+    --word: 25%;
 }
 
 * {
