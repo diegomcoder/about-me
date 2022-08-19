@@ -124,7 +124,7 @@ window.addEventListener('scroll', () => {
     } else if (window.innerWidth > 850 && window.innerWidth > 600) {
         navbar.style = null
         document.querySelectorAll('.navbar-list li:not(.active-nav)').forEach((a) => {
-            a.style.color = 'initial'
+            a.style.color = '#fff'
         })
         navbar.style.top = '10px'
     }

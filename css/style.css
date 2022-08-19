@@ -7,9 +7,10 @@
     --main-clr-dark: #1e1e25;
     --main-clr-variant: #4cd47a;
     --custom-clr-primary: #4747f3;
-    --custom-clr-secundary: #f06d31;
+    --custom-clr-secundary: #4c568f;
     --transparent-clr-dark: #000000b3;
     --transparent-clr-light: #e8e7e8b3;
+	--transparent-mask-light: #ffffff15;
     --pure-clr-light: #ffffff;
     --pure-clr-dark: #000000;
     --gray-clr: #858585;
@@ -68,6 +69,7 @@ body {
     left: 0;
     height: 100vh;
     width: 100%;
+	background-image: url("../images/polygon-luminary.svg");
     background-position: center;
     background-size: cover;
     transform: scale(1.1);
@@ -88,7 +90,7 @@ body {
     top: 10px;
     display: flex;
     align-items: center;
-    background-image: radial-gradient(circle at 50%, var(--pure-clr-light) 20% 80%, transparent);
+    background-image: transparent;
     position: fixed;
     top: 0;
     width: 60%;
@@ -112,9 +114,9 @@ body {
 .navbar-list li {
     padding: 10px 10px;
     margin: 5px;
-    color: var(--pure-clr-dark);
+	color: var(--pure-clr-light);
     font-family: 'Source Sans Pro', sans-serif;
-    font-weight: 500;
+    font-weight: 600;
     border-radius: 50px;
     -webkit-user-drag: none;
     -webkit-user-select: none;
@@ -324,21 +326,22 @@ body {
     z-index: 3;
     background-color: var(--main-clr-light);
     border-radius: 10px;
+	padding: 0;
+	height: fit-content;
 }
 
 .bio h4 {
-    box-sizing: border-box;
-    display: block;
     border-radius: 10px;
-    margin-right: 0.5em;
-    padding: 1em;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
     font-family: 'Secular One', sans-serif;
     font-size: 30px;
     background-color: var(--main-clr-variant);
     color: var(--main-clr-dark);
-    transform: rotate(-90deg);
     pointer-events: none;
     user-select: none;
+	writing-mode: vertical-lr;
+	margin-right: 1rem;
 }
 
 .cv {
@@ -380,13 +383,15 @@ body {
 .bio ul {
     text-align: left;
     pointer-events: none;
+	margin: .5rem;
+	margin-left: 2rem;
 }
 
 .bio ul li {
+	width: max-content;
     position: relative;
-    margin: 0.5em auto;
-    margin-right: 1em;
-    margin-left: 2em;
+	margin: 0;
+    margin-right: .5rem;
     text-align: left;
     color: var(--main-clr-dark);
     user-select: none;
@@ -654,7 +659,7 @@ body {
     position: relative;
     padding: 15vh 0;
     width: 100%;
-    background-color: var(--transparent-clr-dark);
+    background-color: var(--transparent-mask-light);
     color: var(--main-clr-light);
     text-align: center;
     z-index: 2;
@@ -997,17 +1002,5 @@ footer {
 
     .aboutMe .block .text h3 {
         text-align: center;
-    }
-}
-
-@media (max-width: 1366px) {
-    .underlay {
-        background-image: url('../images/country-hd-screen.png');
-    }
-}
-
-@media (min-width: 1367px) {
-    .underlay {
-        background-image: url('../images/country-fullhd-screen.png');
     }
 }
