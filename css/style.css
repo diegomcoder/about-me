@@ -726,7 +726,7 @@ body {
 }
 
 .social-media-links svg {
-	color: var(--main-clr-light);
+	fill: var(--main-clr-light);
 }
 
 .emailMe {
