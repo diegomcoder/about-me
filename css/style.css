@@ -812,10 +812,6 @@ footer {
     font-size: 16px;
 }
 
-footer p + p {
-    margin-right: 2rem;
-}
-
 footer a {
     color: var(--main-clr-light);
 }
