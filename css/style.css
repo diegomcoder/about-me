@@ -800,14 +800,28 @@ body {
 }
 
 footer {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
     position: relative;
     padding: 50px 0;
     width: 100%;
     background-color: var(--main-clr-dark);
     color: var(--main-clr-light);
-    text-align: center;
     z-index: 2;
     font-size: 16px;
+}
+
+footer p + p {
+    margin-right: 2rem;
+}
+
+footer a {
+    color: var(--main-clr-light);
+}
+
+footer a:hover {
+    color: var(--main-clr-variant);
 }
 
 @media (max-width: 600px) {
