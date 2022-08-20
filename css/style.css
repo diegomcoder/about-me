@@ -725,26 +725,8 @@ body {
     color: var(--main-clr-variant);
 }
 
-#gmail svg {
-    fill: red;
-    width: 32px;
-    height: 32px;
-}
-
-#facebook svg {
-    fill: #3b5998;
-}
-
-#instagram svg {
-    fill: #833AB4;
-}
-
-#youtube svg {
-    fill: red;
-}
-
-#linkedin svg {
-    fill: #0e76a8;
+.social-media-links svg {
+	color: var(--main-clr-light);
 }
 
 .emailMe {
