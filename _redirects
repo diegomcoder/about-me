@@ -1,4 +1,4 @@
-/* 				https://diegomd.com/home/
+/ 				https://diegomd.com/home/
 /home/*			https://diegomd.com/:splat 200
 /about/*		https://diegomd.com/home/:splat 200
 /about-me/*		https://diegomd.com/home/:splat 200
