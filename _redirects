@@ -7,5 +7,5 @@
 
 # Blackpink Quiz
 /blackpink-quiz/*		https://blackpink-quiz.diegomd.com/:splat 200
-/blackpink/*			https://blackpink-quiz.diegomd.com/:splat 200
+/blackpink/*			https://diegomd.com/blackpink-quiz
 /quiz/*					https://diegomd.com/blackpink-quiz
