@@ -1,17 +1,26 @@
 # Personal Website
-/home/*				https://diegomd.com/:splat 200
-/about/*			https://diegomd.com/home/
-/about-me/*			https://diegomd.com/home/
-/site/*				https://diegomd.com/home/
-/website/*			https://diegomd.com/home/
+/home/*					https://diegomd.com/:splat 200
+/about/*				https://diegomd.com/home/
+/about-me/*				https://diegomd.com/home/
+/site/*					https://diegomd.com/home/
+/website/*				https://diegomd.com/home/
 
 # Blackpink Quiz
-/blackpink-quiz/*		https://blackpink-quiz.diegomd.com/splat 200
-# /blackpink/*			https://diegomd.com/blackpink-quiz
-# /quiz/*					https://diegomd.com/blackpink-quiz
+/blackpink-quiz/*		https://blackpink-quiz.diegomd.com/
+/quiz-blackpink/*		https://blackpink-quiz.diegomd.com/
+/blackpink/*			https://blackpink-quiz.diegomd.com/
+/quiz/*					https://blackpink-quiz.diegomd.com/
 
 # FICTIONAL FORM
-/fictional-form/*		https://first-form.diegomd.com/:splat 200
+/fictional-form/*		https://first-form.diegomd.com/
+/form/*					https://first-form.diegomd.com/
+/xbox-form/*			https://first-form.diegomd.com/
+/first-form/*			https://first-form.diegomd.com/
+/formulario/*			https://first-form.diegomd.com/
+/formulario-xbox/*		https://first-form.diegomd.com/
 
 # SPOTIFY CLONE
-/spotify-clone/*		https://spotify-clone.diegomd.com/:splat 200
+/spotify-clone/*		https://spotify-clone.diegomd.com/
+/spotify/*				https://spotify-clone.diegomd.com/
+/clone-spotify/*		https://spotify-clone.diegomd.com/
+/clone/*				https://spotify-clone.diegomd.com/
