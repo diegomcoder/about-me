@@ -6,6 +6,6 @@
 /website/*			https://diegomd.com/home/
 
 # Blackpink Quiz
-/blackpink-quiz		https://blackpink-quiz.diegomd.com/:splat 200
-/blackpink			https://blackpink-quiz.diegomd.com/:splat 200
-/quiz				https://diegomd.com/blackpink-quiz
+/blackpink-quiz/*		https://blackpink-quiz.diegomd.com/:splat 200
+/blackpink/*			https://blackpink-quiz.diegomd.com/:splat 200
+/quiz/*					https://diegomd.com/blackpink-quiz
