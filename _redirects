@@ -9,3 +9,9 @@
 /blackpink-quiz/*		https://blackpink-quiz.diegomd.com/
 # /blackpink/*			https://diegomd.com/blackpink-quiz
 # /quiz/*					https://diegomd.com/blackpink-quiz
+
+# FICTIONAL FORM
+/fictional-form/*		https://first-form.diegomd.com/:splat 200
+
+# SPOTIFY CLONE
+/spotify-clone/*		https://spotify-clone.diegomd.com/:splat 200
