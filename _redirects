@@ -1,2 +1,3 @@
 /about-me/*		https://diegomd.com/:splat 200
-/ 				https://diegomd.com/about-me/
+/* 				https://diegomd.com/about-me/:splat 200
+/home/*			https://diegomd.com/about-me/:splat 200
