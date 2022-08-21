@@ -1,6 +1,6 @@
-/ 				https://diegomd.com/home/
-/home/*			https://diegomd.com/:splat 200
-/about/*		https://diegomd.com/home/:splat 200
-/about-me/*		https://diegomd.com/home/:splat 200
-/site/*			https://diegomd.com/home/:splat 200
-/website/*		https://diegomd.com/home/:splat 200
+/home/* 				https://first-personal-website.diegomd.com:splat 200
+/about/*				https://diegomd.com/home/
+/about-me/*				https://diegomd.com/home/
+/site/*					https://diegomd.com/home/
+/website/*				https://diegomd.com/home/
+/personal-website/*				https://diegomd.com/home/
