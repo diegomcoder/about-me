@@ -47,19 +47,6 @@ function toggleMobileMenuOpenClass() {
     mobile_menu_list.classList.toggle('mobile-menu-open')
 }
 
-mobile_menu_btns.addEventListener('click', ({ target }) => {
-	const elementClicked = target.tagName
-	if (elementClicked === "svg" || elementClicked === "path")
-    	toggleMobileMenuOpenClass()
-})
-
-mobile_menu_list.addEventListener("click", ({ target }) => {
-	const elementClicked = target.tagName
-	if (elementClicked === "LI")
-		toggleMobileMenuOpenClass()
-})
-
-
 window.addEventListener('resize', () => {
     // display full navbar in medium screen
 
@@ -172,12 +159,7 @@ const changeActiveNavbarIndicator = () => {
     }
 }
 
-// SCROLL EVENT LISTENER
-window.addEventListener('scroll', () => {
-	applyParalaxEffect()
-    changeNavBarSize()
-	changeActiveNavbarIndicator()
-})
+
 
 
 // AUTO TYPING SUBHEAD
@@ -300,3 +282,24 @@ function graphAnimation(toAddOrToRemove) {
         })
     }
 }
+
+// EVENT LISTENERS
+mobile_menu_btns.addEventListener('click', ({ target }) => {
+	const elementClicked = target.tagName
+
+	if (elementClicked === "svg" || elementClicked === "path")
+    	toggleMobileMenuOpenClass()
+})
+
+mobile_menu_list.addEventListener("click", ({ target }) => {
+	const elementClicked = target.tagName
+
+	if (elementClicked === "LI")
+		toggleMobileMenuOpenClass()
+})
+
+window.addEventListener('scroll', () => {
+	applyParalaxEffect()
+    changeNavBarSize()
+	changeActiveNavbarIndicator()
+})
