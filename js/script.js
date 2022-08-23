@@ -1,7 +1,8 @@
 const computed_style = getComputedStyle(document.documentElement)
 const project_containers = document.querySelectorAll('.project-container')
-const mobile_menu_btns = document.querySelectorAll('.hamburger-menu-btns .nav-btn')
+const mobile_menu_btns = document.querySelector('.hamburger-menu-btns')
 const mobile_menu_links = document.querySelectorAll('.mobile-navbar-list li')
+const mobile_navbar_list = document.querySelectorAll('.mobile-navbar-list')
 const hamburger_container = document.querySelector('.hamburger-menu-btns')
 const mobile_menu_list = document.querySelector('.mobile-menu-list')
 const graphic_bars = document.querySelectorAll('.bar .level')
@@ -13,14 +14,10 @@ const navbar = document.querySelector('.navbar-section')
 const hero_content = document.getElementById('hero-content')
 const cursor = document.querySelector('.cursor')
 const subhead = document.getElementById('description')
-const hero = document.querySelector('.hero-section')
-const about_me = document.querySelector('.aboutMe-section')
-const skills = document.querySelector('.skills-section')
-const projects = document.querySelector('.projects-section')
-const goal = document.querySelector('.goal-section')
-const contact = document.querySelector('.contact-section')
+const allSections = document.querySelectorAll(".section")
+
 const subheads = ['desenvolvedor web front-end', 'amante da tecnologia', 'encantado por design e animação', 'prazer', 'sou o Diego', 'bem vindo ao meu site']
-let viewport = window.innerHeight
+
 let which_subhead = 0
 let char_index = 1
 let fill = true
@@ -49,17 +46,24 @@ function toggleMobileMenuOpenClass() {
     hamburger_container.classList.toggle('mobile-menu-open')
     mobile_menu_list.classList.toggle('mobile-menu-open')
 }
-mobile_menu_btns.forEach((btn) => btn.addEventListener('click', () => {
-    toggleMobileMenuOpenClass()
-}))
-mobile_menu_links.forEach((mb_link) => mb_link.addEventListener('click', () => {
-    toggleMobileMenuOpenClass()
-}))
+
+mobile_menu_btns.addEventListener('click', ({ target }) => {
+	const elementClicked = target.tagName
+	if (elementClicked === "svg" || elementClicked === "path")
+    	toggleMobileMenuOpenClass()
+})
+
+mobile_menu_list.addEventListener("click", ({ target }) => {
+	const elementClicked = target.tagName
+	if (elementClicked === "LI")
+		toggleMobileMenuOpenClass()
+})
+
 
 window.addEventListener('resize', () => {
     // display full navbar in medium screen
 
-    if (window.scrollY >= viewport && window.innerWidth > 850 && window.innerWidth > 600) {
+    if (scrollY >= innerHeight && innerWidth > 850 && innerWidth > 600) {
         navbar.style.width = '100%'
         navbar.style.backgroundColor = computed_style.getPropertyValue('--transparent-clr-dark')
         navbar.style.backgroundImage = 'unset'
@@ -67,7 +71,7 @@ window.addEventListener('resize', () => {
             a.style.color = 'white'
         })
         navbar.style.top = '0'
-    } else if (window.innerWidth > 850 && window.innerWidth > 600) {
+    } else if (innerWidth > 850 && innerWidth > 600) {
         navbar.style.backgroundColor = null
         navbar.style.width = null
         navbar.style.backgroundImage = null
@@ -75,7 +79,7 @@ window.addEventListener('resize', () => {
             a.style.color = 'initial'
         })
         navbar.style.top = '10px'
-    } else if (window.innerWidth < 850 && window.innerWidth > 600) {
+    } else if (innerWidth < 850 && innerWidth > 600) {
         navbar.style.width = '100%'
         navbar.style.backgroundColor = computed_style.getPropertyValue('--transparent-clr-dark')
         navbar.style.backgroundImage = 'unset'
@@ -83,13 +87,13 @@ window.addEventListener('resize', () => {
             a.style.color = 'white'
         })
         navbar.style.top = '0'
-    } else if (window.innerWidth <= 600) {
+    } else if (innerWidth <= 600) {
         navbar.style = null
     }
 })
 
 // display full navbar in medium screen
-if (window.innerWidth < 850 && window.innerWidth > 600) {
+if (innerWidth < 850 && innerWidth > 600) {
     navbar.style.width = '100%'
     navbar.style.backgroundColor = computed_style.getPropertyValue('--transparent-clr-dark')
     navbar.style.backgroundImage = 'unset'
@@ -99,83 +103,88 @@ if (window.innerWidth < 850 && window.innerWidth > 600) {
     navbar.style.top = '0'
 }
 
-// SCROLL EVENT LISTENER
-window.addEventListener('scroll', () => {
+const applyParalaxEffect = () => {
+	const pageWithNoScroll = scrollY < innerHeight + 10
 
-    // Background Paralax
-    if (window.scrollY < viewport + 10) {
-        underlay.style.top = Math.ceil(-(window.scrollY / 4)) + 'px';
-        underlay.style.filter = `blur(${Math.ceil((window.scrollY / 110))}px)`;
-        hero_content.style.marginTop = Math.ceil(-(window.scrollY / 1)) + 'px';
-    } else {
-        underlay.style.top = '0px';
-        underlay.style.filter = `blur(5px)`;
-    }
+	if (pageWithNoScroll) {
+		underlay.style.top = Math.ceil(-(scrollY / 4)) + 'px';
+        underlay.style.filter = `blur(${Math.ceil((scrollY / 110))}px)`;
+        hero_content.style.marginTop = Math.ceil(-(scrollY / 1)) + 'px';
+		return
+	}
 
-    // Navbar Section
-    if (window.scrollY >= viewport && window.innerWidth > 850 && window.innerWidth > 600) {
+	underlay.style.top = '0px';
+	underlay.style.filter = `blur(5px)`;
+}
+
+const  changeNavBarSize = () => {
+	const aboutSectionOrSectionsBellowAreVisible = scrollY >= innerHeight
+	const isSmallScreen = innerWidth > 600
+	const isMediumScreen = innerWidth > 850
+
+    if (aboutSectionOrSectionsBellowAreVisible && isSmallScreen) {
         navbar.style.width = '100%'
         navbar.style.backgroundColor = computed_style.getPropertyValue('--transparent-clr-dark')
         navbar.style.backgroundImage = 'unset'
+
         document.querySelectorAll('.navbar-list li').forEach((a) => {
             a.style.color = computed_style.getPropertyValue('--main-clr-light')
         })
+
         navbar.style.top = '0'
-    } else if (window.innerWidth > 850 && window.innerWidth > 600) {
+
+    } else if (isMediumScreen) {
         navbar.style = null
+
         document.querySelectorAll('.navbar-list li:not(.active-nav)').forEach((a) => {
             a.style.color = '#fff'
         })
+
         navbar.style.top = '10px'
     }
+}
 
+const removeActiveNavbarIndicators = () => {
+	nav_buttons.forEach((a) => a.classList.remove('active-nav'))
+}
 
-    // Change active when scrolling
+const addActiveNavbarIndicator = (to) => {
+	to.classList.add('active-nav')
+}
+
+const changeActiveNavbarIndicator = () => {
     if (change_active_nav_link_by_click === false) {
-        if (hero.getBoundingClientRect().top >= 450 * -1) {
-            nav_buttons.forEach((a) => a.classList.remove('active-nav'))
-            nav_buttons[0].classList.add('active-nav')
-            nav_buttons[0].style.color = '#fff'
-        }
-        if (about_me.getBoundingClientRect().top <= 250 && about_me.getBoundingClientRect().top >= 350 * -1) {
-            nav_buttons.forEach((a) => a.classList.remove('active-nav'))
-            nav_buttons[1].classList.add('active-nav')
-            nav_buttons[1].style.color = '#fff'
-            graphAnimation('toRemove')
-        }
-        if (skills.getBoundingClientRect().top <= 250 && skills.getBoundingClientRect().top >= 350 * -1) {
-            nav_buttons.forEach((a) => a.classList.remove('active-nav'))
-            nav_buttons[2].classList.add('active-nav')
-            nav_buttons[2].style.color = '#fff'
-            graphAnimation('toAdd')
-        }
-        if (projects.getBoundingClientRect().top <= 250 && projects.getBoundingClientRect().top >= 350 * -1) {
-            nav_buttons.forEach((a) => a.classList.remove('active-nav'))
-            nav_buttons[3].classList.add('active-nav')
-            nav_buttons[3].style.color = '#fff'
-            graphAnimation('toRemove')
-        }
-        if (goal.getBoundingClientRect().top <= 250 && goal.getBoundingClientRect().top >= 350 * -1) {
-            nav_buttons.forEach((a) => a.classList.remove('active-nav'))
-            nav_buttons[4].classList.add('active-nav')
-            nav_buttons[4].style.color = '#fff'
-        }
-        if (contact.getBoundingClientRect().top <= 250 && contact.getBoundingClientRect().top >= 50 * -1) {
-            nav_buttons.forEach((a) => a.classList.remove('active-nav'))
-            nav_buttons[5].classList.add('active-nav')
-            nav_buttons[5].style.color = '#fff'
-        }
+		const marginTopLimmit = Math.floor(innerHeight / 3)
+		const marginBottomLimmit = marginTopLimmit * -1
+
+		allSections.forEach((section, index) => {
+			if (section.getBoundingClientRect().top <= marginTopLimmit && section.getBoundingClientRect().bottom >= marginBottomLimmit) {
+				removeActiveNavbarIndicators()
+            	addActiveNavbarIndicator(nav_buttons[index])
+
+				if (section.id === "skills") {
+					return graphAnimation('toAdd')
+				}
+	
+				graphAnimation('toRemove')
+			}
+		})
     }
+}
+
+// SCROLL EVENT LISTENER
+window.addEventListener('scroll', () => {
+	applyParalaxEffect()
+    changeNavBarSize()
+	changeActiveNavbarIndicator()
 })
 
 
 // AUTO TYPING SUBHEAD
 function autoTyping() {
-    if (fill === true) {
-        char_index++
-    } else {
-        char_index--
-    }
+
+    fill ? char_index++ : char_index--
+    
 
     // delay calling the function at the end of the string
     if (char_index == subheads[which_subhead].length) {
@@ -209,7 +218,7 @@ function autoTyping() {
 // NAVBAR LINKS ACTIVE EFFECT
 nav_buttons.forEach((a) => {
     a.addEventListener('click', function () {
-        if (window.innerWidth > 600) {
+        if (innerWidth > 600) {
             change_active_nav_link_by_click = true
             setTimeout(() => {
                 change_active_nav_link_by_click = false
@@ -219,7 +228,7 @@ nav_buttons.forEach((a) => {
             this.classList.add('active-nav')
 
             let section_position = document.getElementById(`${this.dataset.navlink}`).offsetTop
-            window.scrollTo(0, section_position)
+            scrollTo(0, section_position)
         }
     })
 })
@@ -235,7 +244,7 @@ mobile_menu_links.forEach((a) => {
         this.classList.add('active-nav')
 
         let section_position = document.getElementById(`${this.dataset.navlink}`).offsetTop
-        window.scrollTo(0, section_position)
+        scrollTo(0, section_position)
     })
 })
 

@@ -782,9 +782,6 @@ body {
 }
 
 footer {
-	position: relative;
-    padding: 50px 0;
-    width: 100%;
     background-color: var(--main-clr-dark);
     color: var(--main-clr-light);
     z-index: 2;
@@ -797,12 +794,22 @@ footer .container {
 	flex-wrap: wrap;
 }
 
+footer .buttons {
+	padding: 2rem;
+	display: flex;
+	gap: 1rem;
+}
+
 footer a {
-    color: var(--main-clr-light);
+	color: var(--main-clr-light);
 }
 
 footer a:hover {
-    color: var(--main-clr-variant);
+	color: var(--main-clr-variant);
+}
+
+footer p {
+	padding: 1rem 10px;
 }
 
 @media (max-width: 600px) {
