@@ -1,6 +1,8 @@
-Welcome to my portfolio.
-Here I want to share with you a little about myself and my journey learning web programming.
-If you want to contribute with any idea or suggestion, feel free to do that here or by emailing me to mdsidiego@gmail.com.
+![image](https://github.com/diegomdsv/about-me/assets/74707450/d587896e-3c58-4ed5-bdd0-66e7f3292e1f)
 
-THE BEST IDEAS WILL BE SHOWN HERE BELOW
-*
+Link para o website: https://diegomd.com/
+
+Bem vindo ao meu portfólio!
+
+Aqui eu compartilho um pouco sobre quem eu sou e o meu aprendizado de programação para web.
+Se tiver alguma ideia ou sugestão, fique à vontade para contribuir por aqui ou pelo email mdsidiego@gmail.com
