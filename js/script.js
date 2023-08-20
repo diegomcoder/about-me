@@ -18,9 +18,11 @@ const allSections = document.querySelectorAll(".section")
 
 const subheads = ['engenheiro de software em formação', 'desenvolvedor web Java & Python', 'futuro youtuber e gestor de mídias sociais', 'e mais um pouco rsrs', 'seja bem vindo ao meu website']
 
-let span_with_class_square_percent_already_removed = true
+let which_subhead = 0
+let char_index = 1
+let fill = true
 let change_active_nav_link_by_click = false
-
+let span_with_class_square_percent_already_removed = true
 nav_buttons[0].classList.add('active-nav')
 
 if (window.innerWidth > 600) {
@@ -159,9 +161,7 @@ const changeActiveNavbarIndicator = () => {
 
 
 
-let char_index = 1
-let which_subhead = 0
-let fill = true
+
 // AUTO TYPING SUBHEAD
 function autoTyping() {
 
@@ -255,7 +255,6 @@ function toRipple(e, thisSection) {
     thisSection.appendChild(circle)
     setTimeout(() => circle.remove(), 500)
 }
-
 
 // GRAPH ANIMATION
 // fill percentage
