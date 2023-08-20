@@ -18,6 +18,8 @@ const allSections = document.querySelectorAll(".section")
 
 const subheads = ['engenheiro de software em formação', 'desenvolvedor web Java & Python', 'futuro youtuber e gestor de mídias sociais', 'e mais um pouco rsrs', 'seja bem vindo ao meu website']
 
+let span_with_class_square_percent_already_removed = true
+
 nav_buttons[0].classList.add('active-nav')
 
 if (window.innerWidth > 600) {
@@ -256,7 +258,6 @@ function toRipple(e, thisSection) {
 
 
 // GRAPH ANIMATION
-let span_with_class_square_percent_already_removed = true
 // fill percentage
 function graphAnimation(toAddOrToRemove) {
     if (toAddOrToRemove === 'toRemove' && !span_with_class_square_percent_already_removed) {
