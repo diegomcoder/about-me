@@ -169,7 +169,7 @@ function autoTyping() {
 
     // delay calling the function at the end of the string
     if (char_index == subheads[which_subhead].length) {
-        let mseconds = subheads[which_subhead].length * 50
+        let mseconds = subheads[which_subhead].length * 100
         setTimeout(autoTyping, mseconds)
     } else {
         setTimeout(autoTyping, 50)
