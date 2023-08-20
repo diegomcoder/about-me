@@ -18,11 +18,6 @@ const allSections = document.querySelectorAll(".section")
 
 const subheads = ['engenheiro de software em formação', 'desenvolvedor web Java & Python', 'futuro youtuber e gestor de mídias sociais', 'e mais um pouco rsrs', 'seja bem vindo ao meu website']
 
-let which_subhead = 0
-let char_index = 1
-let fill = true
-let change_active_nav_link_by_click = false
-let span_with_class_square_percent_already_removed = true
 nav_buttons[0].classList.add('active-nav')
 
 if (window.innerWidth > 600) {
@@ -139,6 +134,7 @@ const addActiveNavbarIndicator = (to) => {
 	to.classList.add('active-nav')
 }
 
+let change_active_nav_link_by_click = false
 const changeActiveNavbarIndicator = () => {
     if (change_active_nav_link_by_click === false) {
 		const marginTopLimmit = Math.floor(innerHeight / 3)
@@ -161,12 +157,13 @@ const changeActiveNavbarIndicator = () => {
 
 
 
-
+let char_index = 1
+let which_subhead = 0
+let fill = true
 // AUTO TYPING SUBHEAD
 function autoTyping() {
 
     fill ? char_index++ : char_index--
-    
 
     // delay calling the function at the end of the string
     if (char_index == subheads[which_subhead].length) {
@@ -257,7 +254,9 @@ function toRipple(e, thisSection) {
     setTimeout(() => circle.remove(), 500)
 }
 
+
 // GRAPH ANIMATION
+let span_with_class_square_percent_already_removed = true
 // fill percentage
 function graphAnimation(toAddOrToRemove) {
     if (toAddOrToRemove === 'toRemove' && !span_with_class_square_percent_already_removed) {
