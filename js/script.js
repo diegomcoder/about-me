@@ -169,10 +169,10 @@ function autoTyping() {
 
     // delay calling the function at the end of the string
     if (char_index == subheads[which_subhead].length) {
-        let mseconds = subheads[which_subhead].length * 100
+        let mseconds = subheads[which_subhead].length * 50
         setTimeout(autoTyping, mseconds)
     } else {
-        setTimeout(autoTyping, 100)
+        setTimeout(autoTyping, 50)
     }
 
     // slice subhead by the char_index number
