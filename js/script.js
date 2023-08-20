@@ -19,6 +19,7 @@ const allSections = document.querySelectorAll(".section")
 const subheads = ['engenheiro de software em formação', 'desenvolvedor web Java & Python', 'futuro youtuber e gestor de mídias sociais', 'e mais um pouco rsrs', 'seja bem vindo ao meu website']
 
 let span_with_class_square_percent_already_removed = true
+let change_active_nav_link_by_click = false
 
 nav_buttons[0].classList.add('active-nav')
 
@@ -136,7 +137,6 @@ const addActiveNavbarIndicator = (to) => {
 	to.classList.add('active-nav')
 }
 
-let change_active_nav_link_by_click = false
 const changeActiveNavbarIndicator = () => {
     if (change_active_nav_link_by_click === false) {
 		const marginTopLimmit = Math.floor(innerHeight / 3)
