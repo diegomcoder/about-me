@@ -16,7 +16,7 @@ const cursor = document.querySelector('.cursor')
 const subhead = document.getElementById('description')
 const allSections = document.querySelectorAll(".section")
 
-const subheads = ['desenvolvedor web front-end', 'amante da tecnologia', 'encantado por design e animação', 'prazer', 'sou o Diego', 'bem vindo ao meu site']
+const subheads = ['engenheiro de software em formação', 'desenvolvedor web Java & Python', 'futuro youtuber e gestor de mídias sociais', 'e mais um pouco rsrs', 'seja bem vindo ao meu website']
 
 let which_subhead = 0
 let char_index = 1
