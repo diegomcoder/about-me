@@ -14,25 +14,25 @@ const navbar = document.querySelector('.navbar-section')
 const hero_content = document.getElementById('hero-content')
 const cursor = document.querySelector('.cursor')
 const subhead = document.getElementById('description')
-const allSections = document.querySelectorAll(".section")
+const all_sections = document.querySelectorAll(".section")
 
 const subheads = ['engenheiro de software em formação', 'desenvolvedor web Java & Python', 'futuro youtuber e gestor de mídias sociais', 'e mais um pouco rsrs', 'seja bem vindo ao meu website']
 
 let which_subhead = 0
 let char_index = 1
 let fill = true
-let change_active_nav_link_by_click = false
-let span_with_class_square_percent_already_removed = true
+let change_active_link_by_click = false
+let square_percent_removed = true
 nav_buttons[0].classList.add('active-nav')
 
 if (window.innerWidth > 600) {
     navbar.style.top = '10px'
 }
 
-autoTyping()
+auto_typing()
 
-graphAnimation('toAdd')
-graphAnimation('toRemove')
+graph_animation('toAdd')
+graph_animation('toRemove')
 
 // CURSOR BLINK
 setInterval(() => {
@@ -42,7 +42,7 @@ setInterval(() => {
 }, 1000)
 
 // NAVBAR MOBILE BUTTONS TOGGLE
-function toggleMobileMenuOpenClass() {
+function toggle_mobile_menu_open() {
     hamburger_container.classList.toggle('mobile-menu-open')
     mobile_menu_list.classList.toggle('mobile-menu-open')
 }
@@ -90,10 +90,10 @@ if (innerWidth < 850 && innerWidth > 600) {
     navbar.style.top = '0'
 }
 
-const applyParalaxEffect = () => {
-	const pageWithNoScroll = scrollY < innerHeight + 10
+const apply_paralax_effect = () => {
+	const page_with_no_scroll = scrollY < innerHeight + 10
 
-	if (pageWithNoScroll) {
+	if (page_with_no_scroll) {
 		underlay.style.top = Math.ceil(-(scrollY / 4)) + 'px';
         underlay.style.filter = `blur(${Math.ceil((scrollY / 110))}px)`;
         hero_content.style.marginTop = Math.ceil(-(scrollY / 1)) + 'px';
@@ -104,12 +104,12 @@ const applyParalaxEffect = () => {
 	underlay.style.filter = `blur(5px)`;
 }
 
-const  changeNavBarSize = () => {
-	const aboutSectionOrSectionsBellowAreVisible = scrollY >= innerHeight
-	const isSmallScreen = innerWidth > 600
-	const isMediumScreen = innerWidth > 850
+const  change_navbar_size = () => {
+	const about_section_or_bellow_visible = scrollY >= innerHeight
+	const small_screen = innerWidth > 600
+	const medium_screen = innerWidth > 850
 
-    if (aboutSectionOrSectionsBellowAreVisible && isSmallScreen) {
+    if (about_section_or_bellow_visible && small_screen) {
         navbar.style.width = '100%'
         navbar.style.backgroundColor = computed_style.getPropertyValue('--transparent-clr-dark')
         navbar.style.backgroundImage = 'unset'
@@ -120,7 +120,7 @@ const  changeNavBarSize = () => {
 
         navbar.style.top = '0'
 
-    } else if (isMediumScreen) {
+    } else if (medium_screen) {
         navbar.style = null
 
         document.querySelectorAll('.navbar-list li:not(.active-nav)').forEach((a) => {
@@ -131,29 +131,29 @@ const  changeNavBarSize = () => {
     }
 }
 
-const removeActiveNavbarIndicators = () => {
+const remove_active_nav_indicators = () => {
 	nav_buttons.forEach((a) => a.classList.remove('active-nav'))
 }
 
-const addActiveNavbarIndicator = (to) => {
+const add_active_nav_indicator = (to) => {
 	to.classList.add('active-nav')
 }
 
-const changeActiveNavbarIndicator = () => {
-    if (change_active_nav_link_by_click === false) {
-		const marginTopLimmit = Math.floor(innerHeight / 3)
-		const marginBottomLimmit = marginTopLimmit * -1
+const change_active_nav_indicator = () => {
+    if (change_active_link_by_click === false) {
+		const margin_top_limit = Math.floor(innerHeight / 3)
+		const margin_bottom_limmit = margin_top_limit * -1
 
-		allSections.forEach((section, index) => {
-			if (section.getBoundingClientRect().top <= marginTopLimmit && section.getBoundingClientRect().bottom >= marginBottomLimmit) {
-				removeActiveNavbarIndicators()
-            	addActiveNavbarIndicator(nav_buttons[index])
+		all_sections.forEach((section, index) => {
+			if (section.getBoundingClientRect().top <= margin_top_limit && section.getBoundingClientRect().bottom >= margin_bottom_limmit) {
+				remove_active_nav_indicators()
+            	add_active_nav_indicator(nav_buttons[index])
 
 				if (section.id === "skills") {
-					return graphAnimation('toAdd')
+					return graph_animation('toAdd')
 				}
 	
-				graphAnimation('toRemove')
+				graph_animation('toRemove')
 			}
 		})
     }
@@ -163,16 +163,16 @@ const changeActiveNavbarIndicator = () => {
 
 
 // AUTO TYPING SUBHEAD
-function autoTyping() {
+function auto_typing() {
 
     fill ? char_index++ : char_index--
 
     // delay calling the function at the end of the string
     if (char_index == subheads[which_subhead].length) {
         let mseconds = subheads[which_subhead].length * 100
-        setTimeout(autoTyping, mseconds)
+        setTimeout(auto_typing, mseconds)
     } else {
-        setTimeout(autoTyping, 50)
+        setTimeout(auto_typing, 50)
     }
 
     // slice subhead by the char_index number
@@ -200,10 +200,10 @@ function autoTyping() {
 nav_buttons.forEach((a) => {
     a.addEventListener('click', function () {
         if (innerWidth > 600) {
-            change_active_nav_link_by_click = true
+            change_active_link_by_click = true
             setTimeout(() => {
-                change_active_nav_link_by_click = false
-                graphAnimation('toAdd')
+                change_active_link_by_click = false
+                graph_animation('toAdd')
             }, 1000)
             nav_buttons.forEach((a) => a.classList.remove('active-nav'))
             this.classList.add('active-nav')
@@ -216,10 +216,10 @@ nav_buttons.forEach((a) => {
 
 mobile_menu_links.forEach((a) => {
     a.addEventListener('click', function () {
-        change_active_nav_link_by_click = true
+        change_active_link_by_click = true
         setTimeout(() => {
-            change_active_nav_link_by_click = false
-            graphAnimation('toAdd')
+            change_active_link_by_click = false
+            graph_animation('toAdd')
         }, 1000)
         nav_buttons.forEach((a) => a.classList.remove('active-nav'))
         this.classList.add('active-nav')
@@ -236,21 +236,21 @@ mobile_menu_links.forEach((a) => {
 // event listener
 ripple.forEach(section => {
     section.addEventListener('click', function (a) {
-        toRipple(a, this)
+        to_ripple(a, this)
     })
 })
 
 // function
-function toRipple(e, thisSection) {
-    const xInside = e.clientX
-    const yInside = e.clientY - e.target.getBoundingClientRect().top
+function to_ripple(e, thisSection) {
+    const x_inside = e.clientX
+    const y_inside = e.clientY - e.target.getBoundingClientRect().top
     const circle = document.createElement('span')
 
     const color = thisSection.dataset.ripple
 
     circle.classList.add(`${color}`)
-    circle.style.top = yInside + 'px'
-    circle.style.left = xInside + 'px'
+    circle.style.top = y_inside + 'px'
+    circle.style.left = x_inside + 'px'
 
     thisSection.appendChild(circle)
     setTimeout(() => circle.remove(), 500)
@@ -258,15 +258,15 @@ function toRipple(e, thisSection) {
 
 // GRAPH ANIMATION
 // fill percentage
-function graphAnimation(toAddOrToRemove) {
-    if (toAddOrToRemove === 'toRemove' && !span_with_class_square_percent_already_removed) {
+function graph_animation(add_or_remove) {
+    if (add_or_remove === 'toRemove' && !square_percent_removed) {
         graphic_bars.forEach((bar) => {
             bar.innerHTML = "<span class='square-percent'>0%</span>"
             bar.style.width = '13%'
-            span_with_class_square_percent_already_removed = true
+            square_percent_removed = true
         })
 
-    } else if (toAddOrToRemove === 'toAdd' && span_with_class_square_percent_already_removed) {
+    } else if (add_or_remove === 'toAdd' && square_percent_removed) {
         graphic_bars.forEach((bar) => {
             const square_percent = document.createElement('span')
             const percent = bar.dataset.percent
@@ -277,28 +277,28 @@ function graphAnimation(toAddOrToRemove) {
             square_percent.textContent = percent
             bar.appendChild(square_percent)
             bar.style.width = percent
-            span_with_class_square_percent_already_removed = false
+            square_percent_removed = false
         })
     }
 }
 
 // EVENT LISTENERS
 mobile_menu_btns.addEventListener('click', ({ target }) => {
-	const elementClicked = target.tagName
+	const clicked_element = target.tagName
 
-	if (elementClicked === "svg" || elementClicked === "path")
-    	toggleMobileMenuOpenClass()
+	if (clicked_element === "svg" || clicked_element === "path")
+    	toggle_mobile_menu_open()
 })
 
 mobile_menu_list.addEventListener("click", ({ target }) => {
-	const elementClicked = target.tagName
+	const clicked_element = target.tagName
 
-	if (elementClicked === "LI")
-		toggleMobileMenuOpenClass()
+	if (clicked_element === "LI")
+		toggle_mobile_menu_open()
 })
 
 window.addEventListener('scroll', () => {
-	applyParalaxEffect()
-    changeNavBarSize()
-	changeActiveNavbarIndicator()
+	apply_paralax_effect()
+    change_navbar_size()
+	change_active_nav_indicator()
 })
