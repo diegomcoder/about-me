@@ -50,7 +50,7 @@ function toggle_mobile_menu_open() {
 window.addEventListener('resize', () => {
     // display full navbar in medium screen
 
-    if (scrollY >= innerHeight && innerWidth > 850 && innerWidth > 600) {
+    if (scrollY >= innerHeight && innerWidth > 850) {
         navbar.style.width = '100%'
         navbar.style.backgroundColor = computed_style.getPropertyValue('--transparent-clr-dark')
         navbar.style.backgroundImage = 'unset'
@@ -58,7 +58,7 @@ window.addEventListener('resize', () => {
             a.style.color = 'white'
         })
         navbar.style.top = '0'
-    } else if (innerWidth > 850 && innerWidth > 600) {
+    } else if (innerWidth > 850) {
         navbar.style.backgroundColor = null
         navbar.style.width = null
         navbar.style.backgroundImage = null
@@ -104,7 +104,7 @@ const apply_paralax_effect = () => {
 	underlay.style.filter = `blur(5px)`;
 }
 
-const  change_navbar_size = () => {
+const change_navbar_size = () => {
 	const about_section_or_bellow_visible = scrollY >= innerHeight
 	const small_screen = innerWidth > 600
 	const medium_screen = innerWidth > 850
