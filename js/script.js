@@ -1,88 +1,81 @@
-const computed_style = getComputedStyle(document.documentElement)
-const project_containers = document.querySelectorAll('.project-container')
-const mobile_menu_btns = document.querySelector('.hamburger-menu-btns')
-const mobile_menu_links = document.querySelectorAll('.mobile-navbar-list li')
-const mobile_navbar_list = document.querySelectorAll('.mobile-navbar-list')
-const hamburger_container = document.querySelector('.hamburger-menu-btns')
-const mobile_menu_list = document.querySelector('.mobile-menu-list')
-const graphic_bars = document.querySelectorAll('.bar .level')
+const computedStyle = getComputedStyle(document.documentElement)
+const projectContainers = document.querySelectorAll('.project-container')
+const mobileMenuBtns = document.querySelector('.hamburger-menu-btns')
+const mobileMenuLinks = document.querySelectorAll('.mobile-navbar-list li')
+const mobileNavbarList = document.querySelectorAll('.mobile-navbar-list')
+const hamburgerContainer = document.querySelector('.hamburger-menu-btns')
+const mobileMenuList = document.querySelector('.mobile-menu-list')
+const graphicBars = document.querySelectorAll('.bar .level')
 const ripple = document.querySelectorAll('.ripple')
-const nav_buttons = document.querySelectorAll('.navbar-list li')
-const video_background_frame = document.querySelector('.background-fill')
+const navBtns = document.querySelectorAll('.navbar-list li')
+const videoBgFrame = document.querySelector('.background-fill')
 const underlay = document.querySelector('.underlay')
 const navbar = document.querySelector('.navbar-section')
-const hero_content = document.getElementById('hero-content')
+const heroContent = document.getElementById('hero-content')
 const cursor = document.querySelector('.cursor')
 const subhead = document.getElementById('description')
-const all_sections = document.querySelectorAll(".section")
+const allSections = document.querySelectorAll(".section")
 
-const subheads = ['engenheiro de software em formação', 'desenvolvedor web Java & Python', 'futuro youtuber e gestor de mídias sociais', 'e mais um pouco rsrs', 'seja bem vindo ao meu website']
+const subheads = ['engenheiro de software em formação', 'desenvolvedor web Java & Python', 'seja bem vindo ao meu website']
 
 let which_subhead = 0
-let char_index = 1
+let charIdx = 1
 let fill = true
-let change_active_link_by_click = false
-let square_percent_removed = true
-nav_buttons[0].classList.add('active-nav')
+let activeLinkChangable = false
+let squarePercentRemoved = true
+navBtns[0].classList.add('active-nav')
 
 if (window.innerWidth > 600) {
     navbar.style.top = '10px'
 }
 
-auto_typing()
+autoTyping()
 
-graph_animation('toAdd')
-graph_animation('toRemove')
+graphAnimation('toAdd')
+graphAnimation('toRemove')
 
 // CURSOR BLINK
 setInterval(() => {
     description.style.setProperty("--cursor-clr", null)
-    const colored_cursor = computed_style.getPropertyValue('--main-clr-light')
+    const colored_cursor = computedStyle.getPropertyValue('--main-clr-light')
     setTimeout(() => description.style.setProperty("--cursor-clr", `${colored_cursor}`), 500)
 }, 1000)
 
 // NAVBAR MOBILE BUTTONS TOGGLE
-function toggle_mobile_menu_open() {
-    hamburger_container.classList.toggle('mobile-menu-open')
-    mobile_menu_list.classList.toggle('mobile-menu-open')
+function toggleMobileMenu() {
+    hamburgerContainer.classList.toggle('mobile-menu-open')
+    mobileMenuList.classList.toggle('mobile-menu-open')
 }
 
 window.addEventListener('resize', () => {
-    // display full navbar in medium screen
-
-    if (scrollY >= innerHeight && innerWidth > 850) {
-        navbar.style.width = '100%'
-        navbar.style.backgroundColor = computed_style.getPropertyValue('--transparent-clr-dark')
-        navbar.style.backgroundImage = 'unset'
-        document.querySelectorAll('.navbar-list li a').forEach((a) => {
-            a.style.color = 'white'
-        })
-        navbar.style.top = '0'
-    } else if (innerWidth > 850) {
-        navbar.style.backgroundColor = null
-        navbar.style.width = null
-        navbar.style.backgroundImage = null
-        document.querySelectorAll('.navbar-list li a:not(.active-nav)').forEach((a) => {
-            a.style.color = 'initial'
-        })
-        navbar.style.top = '10px'
-    } else if (innerWidth < 850 && innerWidth > 600) {
-        navbar.style.width = '100%'
-        navbar.style.backgroundColor = computed_style.getPropertyValue('--transparent-clr-dark')
-        navbar.style.backgroundImage = 'unset'
-        document.querySelectorAll('.navbar-list li a').forEach((a) => {
-            a.style.color = 'white'
-        })
-        navbar.style.top = '0'
-    } else if (innerWidth <= 600) {
-        navbar.style = null
+    const links = document.querySelectorAll('.navbar-list li a');
+    if (innerWidth > 850) {
+        if (scrollY >= innerHeight) {
+            setNavbarStyles('100%', computedStyle.getPropertyValue('--transparent-clr-dark'), 'unset', 'white', '0');
+        } else {
+            setNavbarStyles(null, null, null, 'initial', '10px');
+        }
+    } else if (innerWidth > 600) {
+        setNavbarStyles('100%', computedStyle.getPropertyValue('--transparent-clr-dark'), 'unset', 'white', '0');
+    } else {
+        navbar.style = null;
     }
-})
+
+    function setNavbarStyles(width, backgroundColor, backgroundImage, linkColor, top) {
+        navbar.style.width = width;
+        navbar.style.backgroundColor = backgroundColor;
+        navbar.style.backgroundImage = backgroundImage;
+        links.forEach((a) => {
+            a.style.color = linkColor;
+        });
+        navbar.style.top = top;
+    }
+});
 
 // display full navbar in medium screen
 if (innerWidth < 850 && innerWidth > 600) {
     navbar.style.width = '100%'
-    navbar.style.backgroundColor = computed_style.getPropertyValue('--transparent-clr-dark')
+    navbar.style.backgroundColor = computedStyle.getPropertyValue('--transparent-clr-dark')
     navbar.style.backgroundImage = 'unset'
     document.querySelectorAll('.navbar-list li a').forEach((a) => {
         a.style.color = 'white'
@@ -90,13 +83,13 @@ if (innerWidth < 850 && innerWidth > 600) {
     navbar.style.top = '0'
 }
 
-const apply_paralax_effect = () => {
-	const page_with_no_scroll = scrollY < innerHeight + 10
+const applyParalax = () => {
+	const noScrollPage = scrollY < innerHeight + 10
 
-	if (page_with_no_scroll) {
+	if (noScrollPage) {
 		underlay.style.top = Math.ceil(-(scrollY / 4)) + 'px';
         underlay.style.filter = `blur(${Math.ceil((scrollY / 110))}px)`;
-        hero_content.style.marginTop = Math.ceil(-(scrollY / 1)) + 'px';
+        heroContent.style.marginTop = Math.ceil(-(scrollY / 1)) + 'px';
 		return
 	}
 
@@ -104,153 +97,114 @@ const apply_paralax_effect = () => {
 	underlay.style.filter = `blur(5px)`;
 }
 
-const change_navbar_size = () => {
-	const about_section_or_bellow_visible = scrollY >= innerHeight
-	const small_screen = innerWidth > 600
-	const medium_screen = innerWidth > 850
+const changeNavSize = () => {
+    const aboutSectionVisible = scrollY >= innerHeight;
+    const smallScreen = innerWidth > 600;
+    const mediumScreen = innerWidth > 850;
 
-    if (about_section_or_bellow_visible && small_screen) {
-        navbar.style.width = '100%'
-        navbar.style.backgroundColor = computed_style.getPropertyValue('--transparent-clr-dark')
-        navbar.style.backgroundImage = 'unset'
-
-        document.querySelectorAll('.navbar-list li').forEach((a) => {
-            a.style.color = computed_style.getPropertyValue('--main-clr-light')
-        })
-
-        navbar.style.top = '0'
-
-    } else if (medium_screen) {
-        navbar.style = null
-
-        document.querySelectorAll('.navbar-list li:not(.active-nav)').forEach((a) => {
-            a.style.color = '#fff'
-        })
-
-        navbar.style.top = '10px'
+    if (aboutSectionVisible && smallScreen) {
+        setNavbarStyles('100%', computedStyle.getPropertyValue('--transparent-clr-dark'), 'unset', computedStyle.getPropertyValue('--main-clr-light'), '0');
+    } else if (mediumScreen) {
+        setNavbarStyles(null, null, null, '#fff', '10px');
     }
+
+    function setNavbarStyles(width, backgroundColor, backgroundImage, linkColor, top) {
+        navbar.style.width = width;
+        navbar.style.backgroundColor = backgroundColor;
+        navbar.style.backgroundImage = backgroundImage;
+        document.querySelectorAll('.navbar-list li').forEach((a) => {
+            a.style.color = linkColor;
+        });
+        navbar.style.top = top;
+    }
+};
+
+const removeNavIndicators = () => {
+	navBtns.forEach((a) => a.classList.remove('active-nav'))
 }
 
-const remove_active_nav_indicators = () => {
-	nav_buttons.forEach((a) => a.classList.remove('active-nav'))
-}
-
-const add_active_nav_indicator = (to) => {
+const addNavIndicators = (to) => {
 	to.classList.add('active-nav')
 }
 
-const change_active_nav_indicator = () => {
-    if (change_active_link_by_click === false) {
-		const margin_top_limit = Math.floor(innerHeight / 3)
-		const margin_bottom_limmit = margin_top_limit * -1
-
-		all_sections.forEach((section, index) => {
-			if (section.getBoundingClientRect().top <= margin_top_limit && section.getBoundingClientRect().bottom >= margin_bottom_limmit) {
-				remove_active_nav_indicators()
-            	add_active_nav_indicator(nav_buttons[index])
-
-				if (section.id === "skills") {
-					return graph_animation('toAdd')
-				}
-	
-				graph_animation('toRemove')
-			}
-		})
+const changeNavIndicator = () => {
+    if (!activeLinkChangable) {
+        const limit = Math.floor(innerHeight / 3);
+        allSections.forEach((section, index) => {
+            const { top, bottom } = section.getBoundingClientRect();
+            if (top <= limit && bottom >= -limit) {
+                removeNavIndicators();
+                addNavIndicators(navBtns[index]);
+                graphAnimation(section.id === "skills" ? 'toAdd' : 'toRemove');
+            }
+        });
     }
-}
-
-
-
+};
 
 // AUTO TYPING SUBHEAD
-function auto_typing() {
+function autoTyping() {
+    fill ? charIdx++ : charIdx--;
+    let mseconds = (charIdx == subheads[which_subhead].length) ? subheads[which_subhead].length * 100 : 50;
+    setTimeout(autoTyping, mseconds);
+    subhead.innerText = subheads[which_subhead].slice(0, charIdx);
 
-    fill ? char_index++ : char_index--
-
-    // delay calling the function at the end of the string
-    if (char_index == subheads[which_subhead].length) {
-        let mseconds = subheads[which_subhead].length * 100
-        setTimeout(auto_typing, mseconds)
-    } else {
-        setTimeout(auto_typing, 50)
+    if (!fill && charIdx === 1) {
+        which_subhead = (which_subhead === subheads.length - 1) ? 0 : which_subhead + 1;
     }
 
-    // slice subhead by the char_index number
-    subhead.innerText = subheads[which_subhead].slice(0, char_index)
-
-    // change to the next subhead in subheads array
-    if (fill === false && char_index === 1) {
-        which_subhead++
-    }
-
-    // change to the first subhead in the subheads array
-    if (fill === false && which_subhead === subheads.length) {
-        which_subhead = 0
-    }
-
-    // decide to fill or delete automatically
-    if (char_index == subheads[which_subhead].length) {
-        fill = false
-    } else if (char_index === 1) {
-        fill = true
-    }
+    fill = (charIdx == subheads[which_subhead].length) ? false : (charIdx === 1) ? true : fill;
 }
 
 // NAVBAR LINKS ACTIVE EFFECT
-nav_buttons.forEach((a) => {
+navBtns.forEach((a) => {
     a.addEventListener('click', function () {
         if (innerWidth > 600) {
-            change_active_link_by_click = true
+            activeLinkChangable = true
             setTimeout(() => {
-                change_active_link_by_click = false
-                graph_animation('toAdd')
+                activeLinkChangable = false
+                graphAnimation('toAdd')
             }, 1000)
-            nav_buttons.forEach((a) => a.classList.remove('active-nav'))
+            navBtns.forEach((a) => a.classList.remove('active-nav'))
             this.classList.add('active-nav')
 
-            let section_position = document.getElementById(`${this.dataset.navlink}`).offsetTop
-            scrollTo(0, section_position)
+            let sectionPosition = document.getElementById(`${this.dataset.navlink}`).offsetTop
+            scrollTo(0, sectionPosition)
         }
     })
 })
 
-mobile_menu_links.forEach((a) => {
+mobileMenuLinks.forEach((a) => {
     a.addEventListener('click', function () {
-        change_active_link_by_click = true
+        activeLinkChangable = true
         setTimeout(() => {
-            change_active_link_by_click = false
-            graph_animation('toAdd')
+            activeLinkChangable = false
+            graphAnimation('toAdd')
         }, 1000)
-        nav_buttons.forEach((a) => a.classList.remove('active-nav'))
+        navBtns.forEach((a) => a.classList.remove('active-nav'))
         this.classList.add('active-nav')
 
-        let section_position = document.getElementById(`${this.dataset.navlink}`).offsetTop
-        scrollTo(0, section_position)
+        let sectionPosition = document.getElementById(`${this.dataset.navlink}`).offsetTop
+        scrollTo(0, sectionPosition)
     })
 })
-
-
-
 
 // RIPPLE EFFECT
-// event listener
 ripple.forEach(section => {
     section.addEventListener('click', function (a) {
-        to_ripple(a, this)
+        toRipple(a, this)
     })
 })
 
-// function
-function to_ripple(e, thisSection) {
-    const x_inside = e.clientX
-    const y_inside = e.clientY - e.target.getBoundingClientRect().top
+function toRipple(e, thisSection) {
+    const xInside = e.clientX
+    const yInside = e.clientY - e.target.getBoundingClientRect().top
     const circle = document.createElement('span')
 
     const color = thisSection.dataset.ripple
 
     circle.classList.add(`${color}`)
-    circle.style.top = y_inside + 'px'
-    circle.style.left = x_inside + 'px'
+    circle.style.top = yInside + 'px'
+    circle.style.left = xInside + 'px'
 
     thisSection.appendChild(circle)
     setTimeout(() => circle.remove(), 500)
@@ -258,47 +212,40 @@ function to_ripple(e, thisSection) {
 
 // GRAPH ANIMATION
 // fill percentage
-function graph_animation(add_or_remove) {
-    if (add_or_remove === 'toRemove' && !square_percent_removed) {
-        graphic_bars.forEach((bar) => {
-            bar.innerHTML = "<span class='square-percent'>0%</span>"
-            bar.style.width = '13%'
-            square_percent_removed = true
-        })
-
-    } else if (add_or_remove === 'toAdd' && square_percent_removed) {
-        graphic_bars.forEach((bar) => {
-            const square_percent = document.createElement('span')
-            const percent = bar.dataset.percent
-
-            bar.innerHTML = ""
-            square_percent.classList.remove('square-percent')
-            square_percent.classList.add('square-percent')
-            square_percent.textContent = percent
-            bar.appendChild(square_percent)
-            bar.style.width = percent
-            square_percent_removed = false
-        })
-    }
+function graphAnimation(cmd) {
+    graphicBars.forEach((bar) => {
+        if (cmd === 'toRemove' && !squarePercentRemoved) {
+            bar.innerHTML = "<span class='square-percent'>0%</span>";
+            bar.style.width = '13%';
+        } else if (cmd === 'toAdd' && squarePercentRemoved) {
+            const squarePercent = document.createElement('span');
+            squarePercent.className = 'square-percent';
+            squarePercent.textContent = bar.dataset.percent;
+            bar.innerHTML = "";
+            bar.appendChild(squarePercent);
+            bar.style.width = bar.dataset.percent;
+        }
+    });
+    squarePercentRemoved = !squarePercentRemoved;
 }
 
 // EVENT LISTENERS
-mobile_menu_btns.addEventListener('click', ({ target }) => {
-	const clicked_element = target.tagName
+mobileMenuBtns.addEventListener('click', ({ target }) => {
+	const clickedElement = target.tagName
 
-	if (clicked_element === "svg" || clicked_element === "path")
-    	toggle_mobile_menu_open()
+	if (clickedElement === "svg" || clickedElement === "path")
+    	toggleMobileMenu()
 })
 
-mobile_menu_list.addEventListener("click", ({ target }) => {
-	const clicked_element = target.tagName
+mobileMenuList.addEventListener("click", ({ target }) => {
+	const clickedElement = target.tagName
 
-	if (clicked_element === "LI")
-		toggle_mobile_menu_open()
+	if (clickedElement === "LI")
+		toggleMobileMenu()
 })
 
 window.addEventListener('scroll', () => {
-	apply_paralax_effect()
-    change_navbar_size()
-	change_active_nav_indicator()
+	applyParalax()
+    changeNavSize()
+	changeNavIndicator()
 })
