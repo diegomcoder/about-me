@@ -1,4 +1,4 @@
-const computedStyle = getComputedStyle(document.documentElement)
+/*const computedStyle = getComputedStyle(document.documentElement)
 const projectContainers = document.querySelectorAll('.project-container')
 const mobileMenuBtns = document.querySelector('.hamburger-menu-btns')
 const mobileMenuLinks = document.querySelectorAll('.mobile-navbar-list li')
@@ -15,25 +15,71 @@ const heroContent = document.getElementById('hero-content')
 const cursor = document.querySelector('.cursor')
 const subhead = document.getElementById('description')
 const allSections = document.querySelectorAll(".section")
+*/
 
 
-// NEW CODE
 // Object Literal Notation
-const startWebsite = {
+const main = {
     mobileViewing: true,
-	visibleSection: "home",
-	navbarColor: "transparent",
-	subhead: {
-		current: null,
-		list: [
+    visibleSection: "home",
+    navbarColor: "transparent",
+    subhead: {
+        current: null,
+        list: [
             'engenheiro de software em formação',
             'desenvolvedor web Java & Python',
             'seja bem vindo ao meu website'
-		]
-	}
-}
-//
+        ]
+    },
+    skillsPercentages: {
+        english: 67,
+        javascript: 77,
+        java: 36,
+        css: 62,
+        scss: 11,
+        git: 36,
+        github: 32,
+        pyhton: 49,
+    },
+    interface: {
+        navLinks: document.querySelector(".nav-links"),
+        skillsList: document.querySelector("#skills .graphs") /* replace .graphs for .skillsList */,
+        skillsSection: document.querySelector("#skills")
+    },
+    handlers: {
+        handleResize() {
+            const skills = main.interface.skillsList.querySelectorAll(".skill")
+            main.mobileViewing = innerWidth < 768
+            if (!main.mobileViewing) removeClasses(skills, "active-description")
+        },
+        handleClick({ target }) {
+            const classesArray = Array.from(target.classList)
 
+            if (classesArray.includes("skill")) return toggleSkillDescription(target) // not defined
+            if (classesArray.includes("hamburger-button")) return toggleMobileMenu() // not defined
+            if (classesArray.includes("nav-link")) return goToSection(target) // not defined
+
+            removeClasses(skillsList.children, "active-description") // not defined
+        },
+        handlePageScroll() {
+            listenForGraphAnimation() // not defined
+        },
+        handleMouseMove(event) {
+            //console.log(event.clientX, event.clientY, event.target);
+        }
+    },
+    start() {
+        //addEventListener("scroll", handlePageScroll)
+        //addEventListener("resize", handleResize)
+        //addEventListener("click", handleClick)
+        addEventListener("mousemove", event => main.handlers.handleMouseMove(event))
+    }
+}
+
+main.start()
+
+
+/*
 let which_subhead = 0
 let charIdx = 1
 let fill = true
@@ -100,17 +146,17 @@ if (innerWidth < 850 && innerWidth > 600) {
 }
 
 const applyParalax = () => {
-	const noScrollPage = scrollY < innerHeight + 10
+    const noScrollPage = scrollY < innerHeight + 10
 
-	if (noScrollPage) {
-		underlay.style.top = Math.ceil(-(scrollY / 4)) + 'px';
+    if (noScrollPage) {
+        underlay.style.top = Math.ceil(-(scrollY / 4)) + 'px';
         underlay.style.filter = `blur(${Math.ceil((scrollY / 110))}px)`;
         heroContent.style.marginTop = Math.ceil(-(scrollY / 1)) + 'px';
-		return
-	}
+        return
+    }
 
-	underlay.style.top = '0px';
-	underlay.style.filter = `blur(5px)`;
+    underlay.style.top = '0px';
+    underlay.style.filter = `blur(5px)`;
 }
 
 const changeNavSize = () => {
@@ -136,11 +182,11 @@ const changeNavSize = () => {
 };
 
 const removeNavIndicators = () => {
-	navBtns.forEach((a) => a.classList.remove('active-nav'))
+    navBtns.forEach((a) => a.classList.remove('active-nav'))
 }
 
 const addNavIndicators = (to) => {
-	to.classList.add('active-nav')
+    to.classList.add('active-nav')
 }
 
 const changeNavIndicator = () => {
@@ -160,15 +206,15 @@ const changeNavIndicator = () => {
 // AUTO TYPING SUBHEAD
 function autoTyping() {
     fill ? charIdx++ : charIdx--;
-    let mseconds = (charIdx == startWebsite.subhead.list[which_subhead].length) ? startWebsite.subhead.list[which_subhead].length * 100 : 50;
+    let mseconds = (charIdx == main.subhead.list[which_subhead].length) ? main.subhead.list[which_subhead].length * 100 : 50;
     setTimeout(autoTyping, mseconds);
-    subhead.innerText = startWebsite.subhead.list[which_subhead].slice(0, charIdx);
+    subhead.innerText = main.subhead.list[which_subhead].slice(0, charIdx);
 
     if (!fill && charIdx === 1) {
-        which_subhead = (which_subhead === startWebsite.subhead.list.length - 1) ? 0 : which_subhead + 1;
+        which_subhead = (which_subhead === main.subhead.list.length - 1) ? 0 : which_subhead + 1;
     }
 
-    fill = (charIdx == startWebsite.subhead.list[which_subhead].length) ? false : (charIdx === 1) ? true : fill;
+    fill = (charIdx == main.subhead.list[which_subhead].length) ? false : (charIdx === 1) ? true : fill;
 }
 
 // NAVBAR LINKS ACTIVE EFFECT
@@ -247,21 +293,22 @@ function graphAnimation(cmd) {
 
 // EVENT LISTENERS
 mobileMenuBtns.addEventListener('click', ({ target }) => {
-	const clickedElement = target.tagName
+    const clickedElement = target.tagName
 
-	if (clickedElement === "svg" || clickedElement === "path")
-    	toggleMobileMenu()
+    if (clickedElement === "svg" || clickedElement === "path")
+        toggleMobileMenu()
 })
 
 mobileMenuList.addEventListener("click", ({ target }) => {
-	const clickedElement = target.tagName
+    const clickedElement = target.tagName
 
-	if (clickedElement === "LI")
-		toggleMobileMenu()
+    if (clickedElement === "LI")
+        toggleMobileMenu()
 })
 
 window.addEventListener('scroll', () => {
-	applyParalax()
+    applyParalax()
     changeNavSize()
-	changeNavIndicator()
+    changeNavIndicator()
 })
+*/
