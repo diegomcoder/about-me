@@ -16,7 +16,23 @@ const cursor = document.querySelector('.cursor')
 const subhead = document.getElementById('description')
 const allSections = document.querySelectorAll(".section")
 
-const subheads = ['engenheiro de software em formação', 'desenvolvedor web Java & Python', 'seja bem vindo ao meu website']
+
+// NEW CODE
+// Object Literal Notation
+const startWebsite = {
+    mobileViewing: true,
+	visibleSection: "home",
+	navbarColor: "transparent",
+	subhead: {
+		current: null,
+		list: [
+            'engenheiro de software em formação',
+            'desenvolvedor web Java & Python',
+            'seja bem vindo ao meu website'
+		]
+	}
+}
+//
 
 let which_subhead = 0
 let charIdx = 1
@@ -144,15 +160,15 @@ const changeNavIndicator = () => {
 // AUTO TYPING SUBHEAD
 function autoTyping() {
     fill ? charIdx++ : charIdx--;
-    let mseconds = (charIdx == subheads[which_subhead].length) ? subheads[which_subhead].length * 100 : 50;
+    let mseconds = (charIdx == startWebsite.subhead.list[which_subhead].length) ? startWebsite.subhead.list[which_subhead].length * 100 : 50;
     setTimeout(autoTyping, mseconds);
-    subhead.innerText = subheads[which_subhead].slice(0, charIdx);
+    subhead.innerText = startWebsite.subhead.list[which_subhead].slice(0, charIdx);
 
     if (!fill && charIdx === 1) {
-        which_subhead = (which_subhead === subheads.length - 1) ? 0 : which_subhead + 1;
+        which_subhead = (which_subhead === startWebsite.subhead.list.length - 1) ? 0 : which_subhead + 1;
     }
 
-    fill = (charIdx == subheads[which_subhead].length) ? false : (charIdx === 1) ? true : fill;
+    fill = (charIdx == startWebsite.subhead.list[which_subhead].length) ? false : (charIdx === 1) ? true : fill;
 }
 
 // NAVBAR LINKS ACTIVE EFFECT
