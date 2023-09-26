@@ -24,14 +24,16 @@ const main = {
     visibleSection: "home",
     navbarColor: "transparent",
     subhead: {
-        current: null,
+        current: 0,
         list: [
             'engenheiro de software em formação',
             'desenvolvedor web Java & Python',
             'seja bem vindo ao meu website'
         ]
     },
-    skillsPercentages: {
+
+    skillsPercentages:
+    {
         english: 67,
         javascript: 77,
         java: 36,
@@ -41,38 +43,169 @@ const main = {
         github: 32,
         pyhton: 49,
     },
-    interface: {
+
+    interface:
+    {
+        mobileBtn: document.querySelector(".hamburger-button"),
         navLinks: document.querySelector(".nav-links"),
         skillsList: document.querySelector("#skills .graphs") /* replace .graphs for .skillsList */,
-        skillsSection: document.querySelector("#skills")
+        allSkills: document.querySelectorAll(".skill"),
+        skillsSection: document.querySelector("#skills"),
+        dynamicSubhead: document.getElementById('dynamic-subhead')
     },
-    handlers: {
-        handleResize() {
-            const skills = main.interface.skillsList.querySelectorAll(".skill")
+
+    toggleMobileMenu() {
+        main.interface.navLinks.classList.toggle("active")
+        main.interface.mobileBtn.classList.toggle("crossed")
+    },
+
+    goToSection(element) {
+        const datasetValue = element.dataset.sectionId
+        const section = document.getElementById(datasetValue)
+        scrollTo({
+            top: section.offsetTop,
+            left: 0,
+            behavior: "smooth"
+        })
+    },
+
+    toggleSkillDescription(clickedSkill) {
+        if (!main.mobileViewing) return main.removeClasses(main.interface.allSkills, "active-description")
+
+        main.removeClasses(main.interface.allSkills, "active-description", clickedSkill)
+        clickedSkill.classList.toggle("active-description")
+    },
+
+    closeMobileMenu() {
+        main.interface.navLinks.classList.remove('active')
+        main.interface.mobileBtn.classList.remove('crossed')
+    },
+
+    removeClasses(elements, className, notFrom = null) {
+        for (let i = 0; i < elements.length; i++) {
+            if (notFrom === elements[i]) continue
+            elements[i].classList.remove(className)
+        }
+    },
+
+    animateSubhead() {
+        const color = getComputedStyle(document.documentElement).getPropertyValue('--color-light-100')
+        let type = true
+
+        function blinkCursor() {
+            setInterval(() => {
+                main.interface.dynamicSubhead.style.setProperty("--cursor-clr", null)
+                setTimeout(() => main.interface.dynamicSubhead.style.setProperty("--cursor-clr", `${color}`), 500)
+            }, 1000)
+        }
+
+        function autoTyping() {
+            let index = 0
+            let type = index <= main.subhead.list[main.subhead.current].length
+
+            function digitar() {
+                // modify subhead
+                main.interface.dynamicSubhead.innerText =
+                main.subhead.list[main.subhead.current].slice(0, index)
+
+                // if to type
+                if (type) {
+                    index++
+                    if ()
+                    type = index <= main.subhead.list[main.subhead.current].length
+                }
+                else {
+                    index--
+                    // if 
+                    type = index == 0
+                }
+
+                // type = index === main.subhead.list[main.subhead.current].length
+                
+                setTimeout(digitar, 50)
+            }
+
+            digitar()
+
+            function backspace() { }
+        }
+
+        blinkCursor()
+        autoTyping()
+    },
+
+
+
+    autoTyping() {
+
+        // Se a variável 'fill' for verdadeira, incrementa o índice do caractere, caso contrário, decrementa.
+        fill ? charIdx++ : charIdx--;
+
+        // Define 'mseconds' como o comprimento da string se o índice do caractere for igual ao comprimento da string, caso contrário, define como 50.
+        let mseconds = (charIdx == main.subhead.list[which_subhead].length) ? main.subhead.list[which_subhead].length * 100 : 50;
+
+        // Define um temporizador para chamar a função 'autoTyping' após 'mseconds'.
+        setTimeout(autoTyping, mseconds);
+
+        // Define o texto do subtítulo como uma fatia da string até o índice do caractere.
+        subhead.innerText = main.subhead.list[which_subhead].slice(0, charIdx);
+
+        // Se 'fill' for falso e o índice do caractere for 1, incrementa 'which_subhead' ou redefine para 0 se for o último subtítulo.
+        if (!fill && charIdx === 1) {
+            which_subhead = (which_subhead === main.subhead.list.length - 1) ? 0 : which_subhead + 1;
+        }
+
+        // Se o índice do caractere for igual ao comprimento da string, define 'fill' como falso. Se o índice do caractere for 1, define 'fill' como verdadeiro. Caso contrário, mantém o valor atual de 'fill'.
+        fill = (charIdx == main.subhead.list[which_subhead].length) ? false : (charIdx === 1) ? true : fill;
+    },
+
+    handlers:
+    {
+        resize() {
             main.mobileViewing = innerWidth < 768
-            if (!main.mobileViewing) removeClasses(skills, "active-description")
+            if (!main.mobileViewing) {
+                main.closeMobileMenu()
+                removeClasses(main.interface.allSkills, "active-description")
+            }
+            // if (!main.mobileViewing) removeClasses(skills, "active-description")
         },
-        handleClick({ target }) {
+
+        click({ target }) {
             const classesArray = Array.from(target.classList)
 
-            if (classesArray.includes("skill")) return toggleSkillDescription(target) // not defined
-            if (classesArray.includes("hamburger-button")) return toggleMobileMenu() // not defined
-            if (classesArray.includes("nav-link")) return goToSection(target) // not defined
+            if (classesArray.includes("skill")) {
+                main.toggleSkillDescription(target)
+            }
 
-            removeClasses(skillsList.children, "active-description") // not defined
+            else if (classesArray.includes("hamburger-button")) {
+                main.toggleMobileMenu()
+            }
+
+            else if (classesArray.includes("nav-link")) {
+                main.closeMobileMenu()
+                main.goToSection(target)
+            }
+
+            // attention
+            //main.removeClasses(skillsList.children, "active-description") // not defined
         },
-        handlePageScroll() {
+
+        pageScroll() {
             listenForGraphAnimation() // not defined
         },
-        handleMouseMove(event) {
+
+        mouseMove(event) {
             //console.log(event.clientX, event.clientY, event.target);
         }
     },
+
     start() {
-        //addEventListener("scroll", handlePageScroll)
-        //addEventListener("resize", handleResize)
-        //addEventListener("click", handleClick)
-        addEventListener("mousemove", event => main.handlers.handleMouseMove(event))
+        //addEventListener("scroll", pageScroll)
+        addEventListener("resize", main.handlers.resize)
+        addEventListener("click", main.handlers.click)
+        addEventListener("mousemove", event => main.handlers.mouseMove(event))
+        main.animateSubhead()
+        // main.autoTyping()
     }
 }
 

@@ -28,6 +28,7 @@ html {
 	--color-light-100: #fff;
 	--color-light-200: #eee;
 	--color-light-300: #aaa;
+	--color-transparent-light: #ffffffb0;
 	--color-dark-100: #000;
 	--color-dark-200: #1b1b1b;
 	--color-dark-300: #333;
@@ -35,6 +36,7 @@ html {
 	--color-accent-200: #458;
 	--color-accent-300: #224;
 	--color-transparent-dark-100: #000b;
+	--cursor-clr: transparent;
 }
 
 body {
@@ -79,6 +81,7 @@ h3 {
 
 p {
 	font-size: clamp(.8rem, 5vw, 1rem);
+	margin: 1rem 0;
 }
 
 #about, #skills, #projects, #contact {
@@ -87,7 +90,7 @@ p {
 	overflow: hidden;
 	width: 100vw;
 }
-
+/*
 .background {
 	position: fixed;
 	top: 0;
@@ -98,6 +101,16 @@ p {
 	width: 100vw;
 	height: 100vh;
 	z-index: -999;
+}*/
+
+#particles-js {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: -999;
+	background: rgb(25, 25, 75);
 }
 
 .container {
@@ -257,14 +270,20 @@ nav {
 	user-select: none;
 }
 
-.dynamic-description {
+#dynamic-subhead {
 	transition: transform 300ms;
 }
 
-.dynamic-description:hover {
+#dynamic-subhead:hover {
 	transform: scale(110%);
 }
 
+#dynamic-subhead::after {
+    content: '|';
+    color: var(--cursor-clr);
+    text-shadow: 0 0 0 transparent;
+}
+/*
 #home::before {
 	content: '';
 	position: absolute;
@@ -274,14 +293,14 @@ nav {
 	width: 100%;
 	background: linear-gradient(to top, transparent, var(--color-dark-200));
 }
-
+*/
 #home .container {
 	height: 100vh;
 	display: grid;
 	place-content: center;
 }
 
-#home .dynamic-description {
+#home #dynamic-subhead {
 	font-family: 'Secular One', Arial, Helvetica, sans-serif;
 	font-size: clamp(1rem, 2vw, 1.5rem);
 	color: var(--color-light-100);
@@ -340,7 +359,7 @@ nav {
 	line-height: 1.4rem;
 	color: var(--color-light-200);
 	margin: 1rem 0 2rem;
-	text-align: center;
+	text-align: justify;
 }
 
 #about .badge {
@@ -411,11 +430,19 @@ nav {
 
 /* Skills Section */
 #skills {
-	background-color: var(--color-light-200);
+	/* background-color: var(--color-light-200); */
+	background-color: transparent;
 }
 
 #skills h2 {
-	color: var(--color-dark-300);
+	color: var(--color-accent-100);
+	/* color: var(--color-dark-300); */
+}
+
+#skills .container > h3 {
+	text-align: center;
+	margin: 0 auto;
+	color: var(--color-light-200);
 }
 
 #skills h3, #skills p {
@@ -434,6 +461,7 @@ nav {
 	--left: 0;
 	--top: 0;
 	flex: 0 1 400px;
+	background-color: var(--color-transparent-light);
 	box-shadow: 0 0 .5rem var(--color-transparent-dark-100);
 	border-radius: 1rem;
 	padding: 1rem;
@@ -534,6 +562,11 @@ nav {
 	border-radius: 1rem;
 }
 
+.project img {
+	width: 100%;
+	height: 100%;
+}
+
 #projects .project::after {
 	position: absolute;
 	left: 0;
@@ -589,13 +622,13 @@ nav {
 }
 
 
-/* Goal Section */
+/* Goal Section
 #goal {
 	background-color: var(--color-light-200);
-	padding: 2rem 0 3rem;
 	color: var(--color-dark-300);
-	text-align: center;
+	text-align:justify;
 }
+*/
 
 
 /* Contact Section */
@@ -631,13 +664,16 @@ nav {
 	width: max-content;
 }
 
-#contact .link:hover a, #contact .link:hover path {
+#contact .link:hover a,
+#contact .link:hover path,
+footer a:hover path,
+footer a:hover {
 	color: var(--color-accent-100);
 	fill: var(--color-accent-100);
 }
 
 #contact .contact-form {
-	background-color: var(--color-accent-200);
+	background-color: var(--color-dark-200);
 	color: var(--color-light-200);
 	padding: 1rem 0 2rem;
 }
@@ -721,10 +757,11 @@ footer .buttons {
 
 footer a {
 	display: inherit;
-	flex: 1 0 200px;
+	flex: 0 0 auto;
 	gap: .5rem;
 	color: var(--color-light-200);
 	align-items: center;
+	margin: .5rem;
 }
 
 footer p {
