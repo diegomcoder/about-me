@@ -36,7 +36,7 @@ html {
 	--color-accent-200: #458;
 	--color-accent-300: #224;
 	--color-transparent-dark-100: #000b;
-	--cursor-clr: transparent;
+	--cursor-color: transparent;
 }
 
 body {
@@ -280,7 +280,7 @@ nav {
 
 #dynamic-subhead::after {
     content: '|';
-    color: var(--cursor-clr);
+    color: var(--cursor-color);
     text-shadow: 0 0 0 transparent;
 }
 /*
@@ -449,7 +449,7 @@ nav {
 	text-align: left;
 }
 
-#skills .graphs {
+.skillsList {
 	margin: 2rem auto;
 	display: flex;
 	gap: 1rem;
@@ -457,7 +457,7 @@ nav {
 	justify-content: center;
 }
 
-.graphs .skill {
+.skill {
 	--left: 0;
 	--top: 0;
 	flex: 0 1 400px;
@@ -469,7 +469,7 @@ nav {
 	user-select: none;
 }
 
-.graphs .skill::after {
+.skill::after {
 	content: '';
 	position: absolute;
 	top: 0;
@@ -480,7 +480,7 @@ nav {
 	z-index: 1;
 }
 
-.graphs label {
+.skillsList label {
 	width: max-content;
 	display: flex;
 	gap: .5rem;
@@ -488,7 +488,7 @@ nav {
 	margin-bottom: 1.5rem;
 }
 
-.graphs label path {
+.skillsList label path {
 	fill: var(--color-dark-300);
 }
 
@@ -513,7 +513,7 @@ nav {
 	transition: 500ms ease-in;
 }
 
-.graphs .description {
+.skillsList .description {
 	margin-top: 1rem;
 	display: none;
 }
@@ -925,13 +925,13 @@ footer path {
 		place-self: end;
 	}
 
-	#skills .graphs {
+	.skillsList {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
 		gap: 2rem;
 	}
 	
-	.graphs .skill {
+	.skill {
 		--left: 0;
 		--top: 0;
 	}
@@ -973,7 +973,7 @@ footer path {
 		text-align: left;
 	}
 
-	#skills .graphs {
+	#skills .skillsList {
 		grid-template-columns: repeat(3, 1fr);
 	}
 
