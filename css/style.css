@@ -15,7 +15,7 @@
 html::-webkit-scrollbar {
 	display: none;
 }
-  
+
 /* Hide scrollbar for IE, Edge and Firefox */
 html {
 	-ms-overflow-style: none;  /* IE and Edge */
@@ -43,6 +43,13 @@ html {
 body {
 	position: relative;
 	overflow-x: hidden;
+}
+
+@keyframes scale {
+    to {
+        transform: translate(-50%, -50%) scale(2);
+        opacity: 0;
+    }
 }
 
 img {
@@ -92,12 +99,12 @@ p {
 	width: 100vw;
 }
 
-#particles-js {
+.background {
 	position: fixed;
 	top: 0;
-	left: 0;
-	width: 100vw;
-	height: 100vh;
+	left: -1vw;
+	width: 102vw;
+	height: 102vh;
 	z-index: -999;
 	background: rgb(25, 25, 75);
 }
@@ -273,17 +280,7 @@ nav {
     color: var(--cursor-color);
     text-shadow: 0 0 0 transparent;
 }
-/*
-#home::before {
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-	height: 10vh;
-	width: 100%;
-	background: linear-gradient(to top, transparent, var(--color-dark-200));
-}
-*/
+
 #home .container {
 	height: 100vh;
 	display: grid;
@@ -381,7 +378,6 @@ nav {
 	margin: 5px;
 }
 
-
 #about .badge li {
 	font-size: clamp(.7rem, 3vw, .8rem);
 	display: flex;
@@ -419,9 +415,10 @@ nav {
 
 
 /* Skills Section */
-#skills {
+#skills, #contact {
 	/* background-color: var(--color-light-200); */
 	background-color: transparent;
+	backdrop-filter: blur(3px);
 }
 
 #skills h2 {
@@ -457,6 +454,7 @@ nav {
 	padding: 1rem;
 	position: relative;
 	user-select: none;
+	transition: 1s ease-in-out;
 }
 
 .skill::after {
@@ -500,7 +498,7 @@ nav {
 	height: 100%;
 	position: absolute;
 	background-color: var(--color-accent-100);
-	transition: 500ms ease-in;
+	transition: 1000ms ease-in;
 }
 
 .skillsList .description {
@@ -610,15 +608,6 @@ nav {
 #projects .project:hover .project-description  {
 	transform: translateY(0);
 }
-
-
-/* Goal Section
-#goal {
-	background-color: var(--color-light-200);
-	color: var(--color-dark-300);
-	text-align:justify;
-}
-*/
 
 
 /* Contact Section */
