@@ -22,14 +22,15 @@ const state = {
     language: "Pt-Br", // not used
     mobileViewing: false,
     visibleSection: "home", // not used
-    navbarColor: "transparent", // not used
-    currentSubhead: 0 // not used
+    navbarColor: "transparent",
+    currentSubhead: 0
 }
 
 const subheads = [
     'engenheiro de software em formação',
     'desenvolvedor web Java & Python',
-    'seja bem vindo ao meu website'
+    'seja bem vindo ao meu website',
+    'Oii'
 ]
 
 const interface = {
@@ -93,6 +94,7 @@ const subroutines = {
     },
 
     subhead: {
+
         blinkCursor() {
             const color = interface.computedStyle.getPropertyValue('--color-light-100')
             setInterval(() => {
@@ -102,7 +104,39 @@ const subroutines = {
         },
 
         autotype() {
-            interface.dynamicSubhead.innerText = subheads[state.currentSubhead].slice(0, subheads[0].length)
+            let index = 0;
+            let directionReverse = false;
+            let interval;
+        
+            function writeAndDelete() {
+                if (interval) clearInterval(interval);
+        
+                interval = setInterval(() => {
+                    // if we exceed the size of the subhead list
+                    if (state.currentSubhead === subheads.length) state.currentSubhead = 0
+
+                    interface.dynamicSubhead.innerText = subheads[state.currentSubhead].slice(0, index);
+        
+                    // if we reach the end of the subhead
+                    if (index >= subheads[state.currentSubhead].length) {
+                        directionReverse = true;
+                        clearInterval(interval);
+                        const delay = subheads[state.currentSubhead].length * 30 + 1300
+                        setTimeout(writeAndDelete, delay);
+                    }
+                    // if we're at the beginning of the subhead
+                    else if (index === 0) {
+                        directionReverse = false;
+                        state.currentSubhead++;
+                        clearInterval(interval);
+                        writeAndDelete();
+                    }
+
+                    directionReverse ? index-- : index++;
+                }, 50);
+            }
+        
+            writeAndDelete();
         },
 
         // delete
@@ -140,6 +174,8 @@ const subroutines = {
                     setTimeout(digitar, 50)
                 }
             }
+
+            
         },
 
         animate() {
