@@ -110,7 +110,7 @@ const subroutines = {
         
             function writeAndDelete() {
                 if (interval) clearInterval(interval);
-        
+                
                 interval = setInterval(() => {
                     // if we exceed the size of the subhead list
                     if (state.currentSubhead === subheads.length) state.currentSubhead = 0
@@ -125,7 +125,7 @@ const subroutines = {
                         setTimeout(writeAndDelete, delay);
                     }
                     // if we're at the beginning of the subhead
-                    else if (index === 0) {
+                    else if (index == 0) {
                         directionReverse = false;
                         state.currentSubhead++;
                         clearInterval(interval);
@@ -137,45 +137,6 @@ const subroutines = {
             }
         
             writeAndDelete();
-        },
-
-        // delete
-        autoTyping() {
-            let index = 0
-            let type = true
-
-            function digitar() {
-                console.log(main.subhead.current)
-                // modify subhead
-                main.interface.dynamicSubhead.innerText =
-                    main.subhead.list[main.subhead.current].slice(0, index)
-
-
-                if (type) {
-                    index++
-
-                    type = index <= main.subhead.list[main.subhead.current].length
-                }
-                else {
-                    index--
-
-                    if (index == 0) {
-                        type = true
-                        if (main.subhead.current == main.subhead.list.length)
-                            main.subhead.current = 0
-                        else
-                            main.subhead.current++
-                    }
-                }
-
-                if (index > main.subhead.list[main.subhead.current].length) {
-                    setTimeout(digitar, 2000)
-                } else {
-                    setTimeout(digitar, 50)
-                }
-            }
-
-            
         },
 
         animate() {
