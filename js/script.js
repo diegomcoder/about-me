@@ -29,18 +29,18 @@ const state = {
 const subheads = [
     'engenheiro de software em formação',
     'desenvolvedor web Java & Python',
-    'seja bem vindo ao meu website',
-    'Oii'
+    'seja bem vindo ao meu website'
 ]
 
 const interface = {
     computedStyle: getComputedStyle(document.documentElement),
     mobileBtn: document.querySelector(".hamburger-button"),
+    navbar:document.querySelector("nav"),
     navLinks: document.querySelector(".nav-links"),
-    skillsList: document.querySelector(".skillsList"),
-    allSkills: document.querySelectorAll(".skill"),
+    dynamicSubhead: document.getElementById('dynamic-subhead'),
+    sections: document.getElementsByClassName('section'),
     skillsSection: document.querySelector("#skills"),
-    dynamicSubhead: document.getElementById('dynamic-subhead')
+    skillsList: document.querySelector(".skillsList")
 }
 
 const handlers = {
@@ -49,7 +49,8 @@ const handlers = {
         state.mobileViewing = innerWidth < 768
         if (!state.mobileViewing) {
             subroutines.mobileMenu.close()
-            subroutines.removeClasses(interface.allSkills, "active-description")
+            subroutines.navbar.setColor()
+            subroutines.removeClasses(interface.skillsList.children, "active-description")
         }
     },
 
@@ -71,7 +72,8 @@ const handlers = {
     },
 
     pageScroll() {
-        subroutines.graphAnimation.start()// not defined
+        subroutines.changeCurrentSection()
+        //subroutines.graphAnimation.start()// not defined
     },
 
     mouseMove(event) {
@@ -91,6 +93,27 @@ const subroutines = {
             interface.navLinks.classList.remove('active')
             interface.mobileBtn.classList.remove('crossed')
         },
+    },
+
+    navbar: {
+        setColor() {
+            const color = interface.computedStyle.getPropertyValue('--color-dark-100')
+            interface.navbar.style.setProperty("--navbar-color", color)
+        },
+
+        changeNavIndicator() {
+            if (!activeLinkChangable) {
+                const limit = Math.floor(innerHeight / 3);
+                allSections.forEach((section, index) => {
+                    const { top, bottom } = section.getBoundingClientRect();
+                    if (top <= limit && bottom >= -limit) {
+                        removeNavIndicators();
+                        addNavIndicators(navBtns[index]);
+                        graphAnimation(section.id === "skills" ? 'toAdd' : 'toRemove');
+                    }
+                });
+            }
+        }
     },
 
     subhead: {
@@ -116,23 +139,25 @@ const subroutines = {
                     if (state.currentSubhead === subheads.length) state.currentSubhead = 0
 
                     interface.dynamicSubhead.innerText = subheads[state.currentSubhead].slice(0, index);
-        
-                    // if we reach the end of the subhead
-                    if (index >= subheads[state.currentSubhead].length) {
-                        directionReverse = true;
-                        clearInterval(interval);
-                        const delay = subheads[state.currentSubhead].length * 30 + 1300
-                        setTimeout(writeAndDelete, delay);
-                    }
+
                     // if we're at the beginning of the subhead
-                    else if (index == 0) {
+                    if (index == 0 && directionReverse) {
                         directionReverse = false;
                         state.currentSubhead++;
                         clearInterval(interval);
                         writeAndDelete();
                     }
-
+        
+                    // if we reach the end of the subhead
+                    else if (index >= subheads[state.currentSubhead].length) {
+                        directionReverse = true;
+                        clearInterval(interval);
+                        const delay = subheads[state.currentSubhead].length * 30 + 1300
+                        setTimeout(writeAndDelete, delay);
+                    }
+        
                     directionReverse ? index-- : index++;
+
                 }, 50);
             }
         
@@ -145,12 +170,33 @@ const subroutines = {
         },
     },
 
+    changeCurrentSection() {
+        if (!state.mobileViewing) {
+            const heightLimit = Math.round(innerHeight / 4);
+
+            Array.from(interface.sections).forEach((section, index) => {
+
+                const { top, bottom } = section.getBoundingClientRect();
+
+                if (top == 0)
+                console.log('Yep', top, bottom)
+
+                /*if (top <= heightLimit && bottom >= -heightLimit) {
+                    console.log(index)
+                    // removeNavIndicators();
+                    // addNavIndicators(navBtns[index]);
+                    // graphAnimation(section.id === "skills" ? 'toAdd' : 'toRemove');
+                }*/
+            });
+        }
+    },
+
     skillDescription: {
         toggle(clickedSkill) {
-            if (!state.mobileViewing) return subroutines.removeClasses(interface.allSkills, "active-description")
+            subroutines.removeClasses(interface.skillsList.children, "active-description", clickedSkill)
 
-            subroutines.removeClasses(interface.allSkills, "active-description", clickedSkill)
-            clickedSkill.classList.toggle("active-description")
+            if (state.mobileViewing)
+                clickedSkill.classList.toggle("active-description")
         },
     },
 
@@ -177,16 +223,16 @@ const subroutines = {
 
 }
 
-const start = () => {
+const loadWebsite = () => {
     addEventListener("resize", handlers.resize)
     addEventListener("click", handlers.click)
+    addEventListener("scroll", handlers.pageScroll)
     subroutines.subhead.animate()
+    state.mobileViewing = innerWidth < 768
     //addEventListener("mousemove", event => main.handlers.mouseMove(event))
-    //main.animateSubhead()
-    // main.autoTyping()
 }
 
-start()
+loadWebsite()
 
 /*
 let which_subhead = 0

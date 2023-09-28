@@ -37,6 +37,7 @@ html {
 	--color-accent-300: #224;
 	--color-transparent-dark-100: #000b;
 	--cursor-color: transparent;
+	--navbar-color: transparent;
 }
 
 body {
@@ -90,18 +91,6 @@ p {
 	overflow: hidden;
 	width: 100vw;
 }
-/*
-.background {
-	position: fixed;
-	top: 0;
-	left: 0;
-	background-position: center;
-	background-size: cover;
-	background-repeat: no-repeat;
-	width: 100vw;
-	height: 100vh;
-	z-index: -999;
-}*/
 
 #particles-js {
 	position: fixed;
@@ -122,6 +111,7 @@ p {
 nav {
 	top: 0;
 	right: 0;
+	background: var(--navbar-color);
 }
 
 /* Navbar links */
@@ -300,7 +290,7 @@ nav {
 	place-content: center;
 }
 
-#home #dynamic-subhead {
+#dynamic-subhead {
 	font-family: 'Secular One', Arial, Helvetica, sans-serif;
 	font-size: clamp(1rem, 2vw, 1.5rem);
 	color: var(--color-light-100);
