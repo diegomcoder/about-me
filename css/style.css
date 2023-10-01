@@ -75,7 +75,7 @@ h2:hover {
 
 h3 {
 	font-family: 'Secular One', Arial, Helvetica, sans-serif;
-	font-size: clamp(1.2rem, 2vw, 1.6rem);
+	font-size: clamp(1.2rem, 2vw, 1.5rem);
 	margin-bottom: 1rem;
 	text-align: center;
 }
