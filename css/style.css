@@ -624,9 +624,11 @@ nav {
 }
 
 #contact .social-media-links {
-	margin: 2rem 0;
+	margin: 2rem auto;
+	max-width: 600px;
+
 	display: flex;
-	gap: .5rem;
+	gap: 1.5rem 4rem;
 	justify-content: space-between;
 	flex-wrap: wrap;
 }
@@ -646,6 +648,8 @@ footer a:hover {
 
 #contact .contact-form {
 	background-color: var(--color-dark-200);
+	max-width: 600px;
+	margin: 0 auto;
 	color: var(--color-light-200);
 	padding: 1rem 0 2rem;
 }
@@ -951,5 +955,32 @@ footer path {
 
 	#projects .projects {
 		grid-template-columns: repeat(3, 1fr);
+	}
+
+	.social-media {
+		float: left;
+		padding: 1rem;
+		width: 50%;
+	}
+
+	.social-media h3 {
+		padding: 1rem;
+		font-size: clamp(1.2rem, 2.5vw, 2rem);
+	}
+
+	#contact .social-media-links {
+		display: flex;
+		align-items: self-start;
+		gap: 0.5rem;
+		padding-left: 4rem;
+		flex-direction: column;
+	}
+
+	#contact .social-media-links .link {
+		flex:content;
+	}
+
+	.contact-form {
+		float: right;
 	}
 }
