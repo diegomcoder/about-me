@@ -28,14 +28,14 @@ html {
 	--color-light-100: #fff;
 	--color-light-200: #eee;
 	--color-light-300: #aaa;
-	--color-transparent-light: #ffffffb0;
+	--color-transparent-light: #ffffff94;
 	--color-dark-100: #000;
 	--color-dark-200: #1b1b1b;
 	--color-dark-300: #333;
 	--color-accent-100: #4d7;
 	--color-accent-200: #458;
 	--color-accent-300: #224;
-	--color-transparent-dark-100: #000b;
+	--color-transparent-dark: #00000094;
 	--cursor-color: transparent;
 	--navbar-color: transparent;
 }
@@ -195,7 +195,7 @@ nav {
 	content: '';
 	width: 100vw;
 	height: 100vh;
-	background-color: var(--color-transparent-dark-100);
+	background-color: var(--color-transparent-dark);
 	top: 0;
 	right: 0;
 	position: absolute;
@@ -442,7 +442,7 @@ nav {
 	--top: 0;
 	flex: 0 1 400px;
 	background-color: var(--color-transparent-light);
-	box-shadow: 0 0 .5rem var(--color-transparent-dark-100);
+	box-shadow: 0 0 .5rem var(--color-transparent-dark);
 	border-radius: 1rem;
 	padding: 1rem;
 	position: relative;
@@ -506,7 +506,7 @@ nav {
 	transform: translate(-50%, -50%);
 	border-radius: 1rem;
 	background-color: var(--color-light-200);
-	box-shadow: 0 0 .5rem var(--color-transparent-dark-100);
+	box-shadow: 0 0 .5rem var(--color-transparent-dark);
 	width: 100%;
 	max-width: 300px;
 	height: max-content;
@@ -560,7 +560,7 @@ nav {
 
 #projects .project-description {
 	position: absolute;
-	background: var(--color-transparent-dark-100);
+	background: var(--color-transparent-dark);
 	inset: 0;
 	width: auto;
 	height: auto;
@@ -619,14 +619,14 @@ nav {
 	align-items: center;
 }
 
-#contact svg path {
+#contact svg path, #contact svg circle{
 	fill: var(--color-light-200);
 }
 
 #contact .social-media-links {
 	margin: 2rem auto;
 	max-width: 600px;
-
+	
 	display: flex;
 	gap: 1.5rem 4rem;
 	justify-content: space-between;
@@ -640,6 +640,7 @@ nav {
 
 #contact .link:hover a,
 #contact .link:hover path,
+#contact .link:hover circle,
 footer a:hover path,
 footer a:hover {
 	color: var(--color-accent-100);
@@ -647,7 +648,8 @@ footer a:hover {
 }
 
 #contact .contact-form {
-	background-color: var(--color-dark-200);
+	background-color: var(--color-transparent-dark);
+	height: 100%;
 	max-width: 600px;
 	margin: 0 auto;
 	color: var(--color-light-200);
@@ -656,7 +658,7 @@ footer a:hover {
 
 #contact .contact-form h3 {
 	font-family: 'Secular One', Arial, Helvetica, sans-serif;
-	font-size: clamp(1.2rem, 2.5vw, 2rem);
+	color: var(--color-light-200);
 	text-align: center;
 	padding: 1rem;
 }
@@ -962,20 +964,21 @@ footer path {
 	}
 
 	.social-media {
+		height: max-content;
 		float: left;
-		padding: 1rem;
 		width: 50%;
+		height: 350px;
+		background-color: var(--color-transparent-light);
 	}
 
 	.social-media h3 {
 		padding: 1rem;
-		font-size: clamp(1.2rem, 2.5vw, 2rem);
 	}
 
 	#contact .social-media-links {
 		display: flex;
 		align-items: self-start;
-		padding-left: 4rem;
+		padding-left: 1rem;
 		flex-direction: column;
 	}
 
@@ -985,5 +988,23 @@ footer path {
 
 	.contact-form {
 		float: right;
+		width: 50%;
+
+	}
+
+	#contact .social-media h3 {
+		color: var(--color-dark-300);
+	}
+	
+	
+	#contact a {
+		color: var(--color-dark-300);
+		display: flex;
+		gap: .5rem;
+		align-items: center;
+	}
+	
+	#contact svg path, #contact svg circle {
+		fill: var(--color-dark-300);
 	}
 }
