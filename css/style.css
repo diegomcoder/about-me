@@ -626,7 +626,7 @@ nav {
 #contact .social-media-links {
 	margin: 2rem auto;
 	max-width: 600px;
-	width: 50%;
+
 	display: flex;
 	gap: 1.5rem 4rem;
 	justify-content: space-between;
@@ -648,7 +648,6 @@ footer a:hover {
 
 #contact .contact-form {
 	background-color: var(--color-dark-200);
-	width: 50%;
 	max-width: 600px;
 	margin: 0 auto;
 	color: var(--color-light-200);
