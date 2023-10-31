@@ -663,6 +663,11 @@ footer a:hover {
 	padding: 1rem;
 }
 
+.form-warning-paragraph {
+	font-size: .8rem;
+	color: orange;
+}
+
 .contact-form form {
 	margin-top: 2rem;
 	display: flex;
@@ -967,7 +972,7 @@ footer path {
 		height: max-content;
 		float: left;
 		width: 50%;
-		height: 350px;
+		height: 440px;
 		background-color: var(--color-transparent-light);
 	}
 
@@ -989,7 +994,6 @@ footer path {
 	.contact-form {
 		float: right;
 		width: 50%;
-
 	}
 
 	#contact .social-media h3 {
