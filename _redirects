@@ -26,15 +26,20 @@
 /clone/*				https://spotify-clone.diegomd.com/
 
 # CALCULADORA
-/calculadora/*		https://calculadora.diegomd.com/
-/calculadora-js/*				https://calculadora.diegomd.com/
-/calc/*		https://calculadora.diegomd.com/
+/calculadora/*			https://calculadora.diegomd.com/
+/calculadora-js/*		https://calculadora.diegomd.com/
+/calc/*					https://calculadora.diegomd.com/
 /calc-js/*				https://calculadora.diegomd.com/
 
 # SIMPLE CURRICULUM
-/curriculo/*		https://curriculo.diegomd.com/
-/curriculum/*		https://curriculo.diegomd.com/
-/curriculun/*		https://curriculo.diegomd.com/
-/curiculum/*		https://curriculo.diegomd.com/
-/curiculun/*		https://curriculo.diegomd.com/
-/cv/*		https://curriculo.diegomd.com/
+/curriculo/*			https://curriculo.diegomd.com/
+/curriculum/*			https://curriculo.diegomd.com/
+/curriculun/*			https://curriculo.diegomd.com/
+/curiculum/*			https://curriculo.diegomd.com/
+/curiculun/*			https://curriculo.diegomd.com/
+/cv/*					https://curriculo.diegomd.com/
+
+
+# BAKERY STOCK CONTROL
+/padaria/*				https://padaria.diegomd.com/
+/bakery/*				https://padaria.diegomd.com/

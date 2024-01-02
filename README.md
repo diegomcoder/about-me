@@ -6,3 +6,4 @@ Bem vindo ao meu portfólio!
 
 Aqui eu compartilho um pouco sobre quem eu sou e o meu aprendizado de programação para web.
 Se tiver alguma ideia ou sugestão, fique à vontade para contribuir por aqui ou pelo email mdsidiego@gmail.com
+<!-- HTML Minifier: https://testsigma.com/free-tools/Html-minify -->
